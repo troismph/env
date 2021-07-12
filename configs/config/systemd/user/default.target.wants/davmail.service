@@ -1,0 +1,15 @@
+[Unit]
+Description=Davmail
+Documentation=man:davmail(1) info:davmail
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/davmail /home/g4z3/src/env/configs/davmail.properties
+ExecStop=
+TimeoutStartSec=30
+Restart=on-failure
+Environment=JAVA_HOME=/home/g4z3/tools/openjdk11
+
+[Install]
+WantedBy=default.target
+

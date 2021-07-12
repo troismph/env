@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/g4z3/tools/tp_button_unlock.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=tp button unlock
+Name=tp button unlock
+Comment[en_US]=disable tp middle button when unlocking screen
+Comment=disable tp middle button when unlocking screen

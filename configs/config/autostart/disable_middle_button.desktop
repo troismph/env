@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=xinput set-button-map "ThinkPad Multi Connect Bluetooth Keyboard with Trackpoint Mouse" 1 0 3 4 5 6 7
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=disable_middle_button
+Name=disable_middle_button
+Comment[en_US]=disable ThinkPad middle button
+Comment=disable ThinkPad middle button

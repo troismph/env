@@ -1,0 +1,7 @@
+#!/bin/bash
+
+DT=`date`
+echo "$DT running tp script" >> /tmp/xinput
+DISPLAY=:1 /usr/bin/xinput set-button-map "ThinkPad Multi Connect Bluetooth Keyboard with Trackpoint Mouse" 1 0 3 4 5 6 7 &>> /tmp/xinput
+DEVID=`xinput list --id-only "pointer:Lenovo ThinkPad Compact USB Keyboard with TrackPoint"`
+DISPLAY=:1 /usr/bin/xinput set-button-map $DEVID 1 0 3 4 5 6 7 &>> /tmp/xinput

@@ -1,0 +1,16 @@
+[Unit]
+Description=Disable TP middle button
+
+[Service]
+Type=forking
+ExecStart=/bin/sh %h/tools/tp_button_unlock.sh
+ExecStop=/bin/echo trying to stop tp_button_lock.sh >> /tmp/xinput
+Environment=LC_ALL=en_US.UTF-8
+Environment=LANG=en_US.UTF-8
+Environment=HOME=%h
+TimeoutStartSec=30
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/seadrive-gui
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=SeaDrive
+Name=SeaDrive
+Comment[en_US]=
+Comment=
