@@ -1,0 +1,10 @@
+[Unit]
+Description=Trigger V2Ray Subscription Refresh
+
+[Timer]
+OnUnitInactiveSec=15min
+#Persistent=true
+#RandomizedDelaySec=1h
+
+[Install]
+WantedBy=timers.target
