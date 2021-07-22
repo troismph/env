@@ -44,7 +44,7 @@
 				"wsSettings": {
 					"path": "/v2ray",
 					"headers": {
-						"Host": "air.hk03.ladderlink.top"
+						"Host": "hk01-v2.ladderlink.top"
 					}
 				},
 				"httpSettings": null,

@@ -124,7 +124,7 @@ export PROJECT_HOME=$HOME/Devel
 source ~/.local/bin/virtualenvwrapper.sh
 
 export JAVA_HOME=~/tools/openjdk11
-export PATH=$PATH:~/tools:${JAVA_HOME}/bin:/home/linuxbrew/.linuxbrew/bin/:/usr/local/nvidia/bin:/usr/local/cuda/bin
+export PATH=$PATH:~/tools:~/tools/gradle/bin:${JAVA_HOME}/bin:/home/linuxbrew/.linuxbrew/bin/:/usr/local/nvidia/bin:/usr/local/cuda/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/cuda/lib64/stubs
 export NVIDIA_REQUIRE_CUDA="cuda>=10.2 brand=tesla,driver>=384,driver<385 brand=tesla,driver>=396,driver<397 brand=tesla,driver>=410,driver<411 brand=tesla,driver>=418,driver<419"
