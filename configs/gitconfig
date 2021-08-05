@@ -59,8 +59,8 @@
 	default = simple
 
 [user]
-	name = penghan
-	email = penghan@yitu-inc.com
+	name = g4z3
+	email = orcishhan@gmail.com
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
