@@ -69,3 +69,4 @@ then
 fi
 mv "$HOME/ssh" "$ssh"
 
+gpg --import cgkey
