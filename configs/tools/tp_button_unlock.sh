@@ -1,4 +1,4 @@
-/usr/bin/dbus-monitor --session "type='signal',interface='org.gnome.ScreenSaver'" |
+/usr/bin/dbus-monitor --session "type='signal',interface='org.xfce.ScreenSaver'" |
     while read x; do
         case "$x" in
             *"boolean true"*) /bin/echo SCREEN_LOCKED >> /tmp/xinput;;
