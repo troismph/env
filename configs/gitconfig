@@ -1,5 +1,5 @@
 [alias]
-	ba = branch -av
+	ba = branch -avv
 	b = branch
 	ci = commit
 	changes = "!f() { git log --pretty=format:'* %s' $1..$2; }; f"
@@ -66,3 +66,5 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[gpg]
+	program = gpg
