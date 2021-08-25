@@ -1,4 +1,5 @@
 [alias]
+    ls = log --show-signature
 	ba = branch -avv
 	b = branch
 	ci = commit
