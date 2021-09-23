@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # golang settings
-export PATH=$PATH:~/tools:~/tools/go/bin
+export PATH=$PATH:~/tools:~/tools/go/bin:~/.local/bin
 export GOPATH=~/tools/go
 export GOPROXY="https://mirrors.aliyun.com/goproxy/"
 
