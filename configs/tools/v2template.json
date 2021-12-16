@@ -1,0 +1,98 @@
+{
+  "log": {
+    "loglevel": "{{loglevel}}"
+  },
+  "inbounds": [
+    {
+      "port": {{socksPort}},
+      "protocol": "socks",
+      "settings": {
+		"udp": {{udp}}
+      }
+    },
+    {
+      "port": {{httpPort}},
+      "protocol": "http",
+      "settings": {
+		"udp": {{udp}}
+      }
+    },
+    {
+      "port": 12315,
+      "protocol": "dokodemo-door",
+      "settings": {
+        "network": "tcp,udp",
+        "followRedirect": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      }
+    }
+  ],
+  "outbounds": [
+	{
+    "protocol": "vmess",
+    "settings": {
+      "vnext": [
+        {
+          "address": "{{address}}",
+          "port": {{serverPort}},
+          "users": [
+            {
+              "id": "{{uuid}}",
+              "alterId": {{aid}},
+              "security": "{{security}}"
+            }
+          ]
+        }
+      ]
+    },
+    "streamSettings": {
+      "network": "{{network}}",
+      "security": "{{streamSecurity}}",
+      "tlsSettings": {{tls}},
+      "kcpSettings": {{kcp}},
+      "wsSettings": {{ws}},
+      "httpSettings": {{http}},
+      "quicSettings": {{quic}},
+	  "mux": {
+  		"enabled": {{mux}},
+      	"concurrency": {{concurrency}}
+      }
+    }
+  	},
+    {
+      "protocol": "freedom",
+      "settings": {},
+      "tag": "direct"
+    }
+],
+  "dns": {
+    "servers": [
+      "{{dns1}}",
+      "{{dns2}}",
+      "localhost"
+    ]
+  },
+	"routing": {
+        "strategy": "rules",
+			"settings": {
+			"domainStrategy": "IPIfNonMatch",
+				"rules": [{{china_sites}}
+					{
+    			    "type": "field",
+    			    "outboundTag": "direct",
+     			    "ip": [{{china_ip}}
+       				    "geoip:private"
+					]
+				},
+                          {
+                    "type": "field",
+                    "ip": ["192.168.0.0/16", "10.8.8.0/24"],
+                    "outboundTag": "direct"
+                }
+			]
+		}
+	}
+}
