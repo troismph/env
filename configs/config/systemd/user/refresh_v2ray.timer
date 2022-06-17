@@ -2,7 +2,7 @@
 Description=Trigger V2Ray Subscription Refresh
 
 [Timer]
-OnUnitInactiveSec=15min
+OnUnitInactiveSec=60min
 #Persistent=true
 #RandomizedDelaySec=1h
 
