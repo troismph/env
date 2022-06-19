@@ -1,0 +1,12 @@
+[Unit]
+Description=Tunnel Service
+
+[Service]
+Type=forking
+ExecStart=/home/g4z3/tools/create_tunnel.sh
+ExecStop=pkill -F /tmp/tunnel.pid
+TimeoutStartSec=30
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

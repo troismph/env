@@ -1,0 +1,4 @@
+** %U
+   :PROPERTIES:
+   :CAPTURED_TIMESTAMP: %U
+   :END:
