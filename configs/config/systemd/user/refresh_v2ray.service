@@ -4,7 +4,7 @@ Documentation=https://www.v2fly.org/
 After=network.target nss-lookup.target
 
 [Service]
-ExecStart=/home/g4z3/tools/refresh_v2ray.sh
+ExecStart=%h/tools/refresh_v2ray.sh
 Restart=on-failure
 RestartPreventExitStatus=23
 
