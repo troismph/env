@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASEDIR=/home/g4z3/tools
+BASEDIR=~/tools
 LOGFILE=/tmp/refresh_v2ray.log
 echo "refreshing v2ray config" >> $LOGFILE
 date >> $LOGFILE
