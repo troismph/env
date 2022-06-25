@@ -1,0 +1,13 @@
+[Unit]
+Description=Dropbox
+
+[Service]
+#Type=forking
+ExecStart=%h/.dropbox-dist/dropboxd
+ExecStop=kill dropboxd
+TimeoutStartSec=30
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+
