@@ -1,0 +1,11 @@
+[Unit]
+Description=Pull Notes from Git Repo
+After=network.target nss-lookup.target
+
+[Service]
+ExecStart=%h/tools/pull_notes.sh
+Restart=on-failure
+RestartPreventExitStatus=23
+
+[Install]
+WantedBy=default.target
