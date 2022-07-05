@@ -1,0 +1,10 @@
+[Unit]
+Description=Trigger Pull Notes from Git Repo
+
+[Timer]
+OnUnitInactiveSec=5min
+#Persistent=true
+#RandomizedDelaySec=1h
+
+[Install]
+WantedBy=timers.target
