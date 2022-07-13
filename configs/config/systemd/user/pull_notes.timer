@@ -2,7 +2,7 @@
 Description=Trigger Pull Notes from Git Repo
 
 [Timer]
-OnUnitInactiveSec=5min
+OnUnitInactiveSec=1h
 #Persistent=true
 #RandomizedDelaySec=1h
 
