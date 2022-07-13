@@ -5,7 +5,8 @@ After=network.target nss-lookup.target
 [Service]
 ExecStart=%h/tools/pull_notes.sh
 Restart=on-failure
-RestartPreventExitStatus=23
+RuntimeMaxSec=60
+RestartSec=600
 
 [Install]
 WantedBy=default.target
