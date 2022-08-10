@@ -71,4 +71,4 @@
 	program = gpg
 [includeIf "gitdir:~/src/pqi/"]
   path = ~/src/pqi/.gitconfig
-  
+    
