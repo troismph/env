@@ -1,0 +1,12 @@
+[Unit]
+Description=Tunnel Service
+
+[Service]
+Type=forking
+ExecStart=/usr/local/bin/create_tunnel.sh
+ExecStop=pkill -F /tmp/tunnel.pid
+TimeoutStartSec=30
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
