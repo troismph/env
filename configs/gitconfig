@@ -72,3 +72,7 @@
 [includeIf "gitdir:~/src/pqi/"]
   path = ~/src/pqi/.gitconfig
     
+; [http]
+; 	proxy = http://localhost:11081
+; [https]
+; 	proxy = http://localhost:11081
