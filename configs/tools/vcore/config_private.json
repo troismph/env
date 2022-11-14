@@ -1,0 +1,88 @@
+{
+	"log": {
+		"loglevel": "warning"
+	},
+	"inbounds": [
+		{
+			"port": 13080,
+			"protocol": "socks",
+			"settings": {
+				"udp": true
+			}
+		},
+		{
+			"port": 13081,
+			"protocol": "http",
+			"settings": {
+				"udp": true
+			}
+		}
+	],
+	"outbounds": [
+		{
+			"protocol": "vmess",
+			"settings": {
+				"vnext": [
+					{
+						"address": "gw.miniogre.com",
+						"port": 16888,
+						"users": [
+							{
+							    "id": "518cabb6-9c67-ee7b-d8a8-96f6cf983345",
+								"alterId": 0,
+								"security": "auto"
+							}
+						]
+					}
+				]
+			},
+			"streamSettings": {
+				"network": "tcp",
+				"security": "tls",
+				"tlsSettings": null,
+				"kcpSettings": null,
+				"wsSettings": null,
+				"httpSettings": null,
+				"quicSettings": null,
+				"mux": {
+					"enabled": true,
+					"concurrency": 8
+				}
+			}
+		},
+		{
+			"protocol": "freedom",
+			"settings": {},
+			"tag": "direct"
+		}
+	],
+	"dns": {
+		"servers": [
+            "8.8.8.8",
+			"localhost"
+		]
+	},
+	"routing": {
+		"strategy": "rules",
+		"settings": {
+			"domainStrategy": "IPIfNonMatch",
+			"rules": [
+				{
+					"type": "field",
+					"outboundTag": "direct",
+					"ip": [
+						"geoip:private"
+					]
+				},
+				{
+					"type": "field",
+					"ip": [
+						"192.168.0.0/16",
+						"10.8.8.0/8"
+					],
+					"outboundTag": "direct"
+				}
+			]
+		}
+	}
+}
