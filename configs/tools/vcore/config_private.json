@@ -4,14 +4,14 @@
 	},
 	"inbounds": [
 		{
-			"port": 13080,
+			"port": 11080,
 			"protocol": "socks",
 			"settings": {
 				"udp": true
 			}
 		},
 		{
-			"port": 13081,
+			"port": 11081,
 			"protocol": "http",
 			"settings": {
 				"udp": true
