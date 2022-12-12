@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SUBSCRIPTION=https://my.yunti.monster/link/WbBgi0t0QXornuCZ?sub=3
+SUBSCRIPTION="https://sub-sg01.yunti.monster/link/WbBgi0t0QXornuCZ?sub=3&extend=1"
 BASEDIR=~/tools
 LOGFILE=/tmp/refresh_v2ray.log
 CONFIG_OUTPUT=$BASEDIR/vcore/config.json
