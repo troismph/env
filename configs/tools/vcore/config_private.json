@@ -16,6 +16,21 @@
 			"settings": {
 				"udp": true
 			}
+		},
+		{
+			"port": 12315,
+			"protocol": "dokodemo-door",
+			"settings": {
+				"network": "tcp,udp",
+				"followRedirect": true
+			},
+			"sniffing": {
+				"enabled": true,
+				"destOverride": [
+					"http",
+					"tls"
+				]
+			}
 		}
 	],
 	"outbounds": [
@@ -24,13 +39,13 @@
 			"settings": {
 				"vnext": [
 					{
-						"address": "gw.miniogre.com",
-						"port": 16888,
+						"address": "cctv.iepl01.yuntiair365.top",
+						"port": 30894,
 						"users": [
 							{
-							    "id": "518cabb6-9c67-ee7b-d8a8-96f6cf983345",
+								"id": "28a103fd-4d89-351d-a015-cff807f275b0",
 								"alterId": 0,
-								"security": "auto"
+								"security": "aes-256-gcm"
 							}
 						]
 					}
@@ -38,7 +53,7 @@
 			},
 			"streamSettings": {
 				"network": "tcp",
-				"security": "tls",
+				"security": "",
 				"tlsSettings": null,
 				"kcpSettings": null,
 				"wsSettings": null,
@@ -58,7 +73,8 @@
 	],
 	"dns": {
 		"servers": [
-            "8.8.8.8",
+			"https://1.1.1.1/dns-query",
+			"https://dns.quad9.net/dns-query",
 			"localhost"
 		]
 	},
@@ -78,7 +94,7 @@
 					"type": "field",
 					"ip": [
 						"192.168.0.0/16",
-						"10.8.8.0/8"
+						"10.8.8.0/24"
 					],
 					"outboundTag": "direct"
 				}
