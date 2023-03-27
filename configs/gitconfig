@@ -48,6 +48,7 @@
 	compression = 9
 	excludesfile = ~/.gitignore
 	filemode = false
+	editor = emacsclient -t
 
 [diff]
 	mnemonicprefix = true
