@@ -100,3 +100,5 @@
 (global-set-key (kbd "M-S-<up>") 'move-text-up)
 (global-set-key (kbd "M-S-<down>") 'move-text-down)
 (global-set-key [remap move-beginning-of-line] #'crux-move-beginning-of-line)
+(global-set-key (kbd "C-+") 'spacemacs/scale-up-font)
+(global-set-key (kbd "C--") 'spacemacs/scale-down-font)
