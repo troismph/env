@@ -9,20 +9,27 @@
 (setq dotspacemacs-scratch-buffer-unkillable 1)
 
 ;; for remote lsp to work...
-(with-eval-after-load 'tramp
-  (add-to-list 'tramp-remote-path "/home/ph/.local/bin")
-  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
-  )
+;; (with-eval-after-load 'tramp
+;;   (add-to-list 'tramp-remote-path "/home/ph/.local/bin")
+;; ;;  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+;;   )
+
+(defun g4z3/setup-python-lsp ()
+  "Configure LSP clients for Python, enabling only `pylsp` and `pylsp-tramp`."
+  (setq lsp-enabled-clients '(pylsp pylsp-tramp)))  ; Enable `pylsp` and `pylsp-tramp` only.
+
+(add-hook 'python-mode-hook #'g4z3/setup-python-lsp)
 
 ;; lsp already ships with remote client lsp-tramp, just need to specify correct tramp path like above
+;; (add-to-list 'lsp-disabled-clients "pylsp-tramp")
 ;; (with-eval-after-load 'lsp-mode
 ;;   (lsp-register-client
 ;;    (make-lsp-client :new-connection (lsp-tramp-connection "/home/ph/.local/bin/pylsp")
 ;;                     :major-modes '(python-mode)
 ;;                     :remote? t
-;;                     :server-id 'pylsp-remote))
+;;                     :server-id 'pylsp-remote-g4z3
+;;                     :priority ))
 ;;   )
-
 ;; completely disable emacs' own version control
 (setq vc-handled-backends nil)
 
