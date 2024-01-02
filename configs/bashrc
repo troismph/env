@@ -127,4 +127,5 @@ export VISUAL="emacs -nw"
 export EDITOR="$VISUAL"
 alias less="less -r"
 
+export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
 source ~/tools/env.sh

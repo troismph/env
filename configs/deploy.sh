@@ -70,3 +70,6 @@ fi
 mv "$HOME/ssh" "$ssh"
 
 gpg --import cgkey
+
+cp ssh_rc $HOME/.ssh/rc
+
