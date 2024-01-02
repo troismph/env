@@ -9,10 +9,10 @@
 (setq dotspacemacs-scratch-buffer-unkillable 1)
 
 ;; for remote lsp to work...
-;; (with-eval-after-load 'tramp
-;;   (add-to-list 'tramp-remote-path "/home/ph/.local/bin")
-;; ;;  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
-;;   )
+(with-eval-after-load 'tramp
+;;  (add-to-list 'tramp-remote-path "/home/ph/.local/bin")
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+  )
 
 (defun g4z3/setup-python-lsp ()
   "Configure LSP clients for Python, enabling only `pylsp` and `pylsp-tramp`."
