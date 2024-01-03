@@ -44,6 +44,10 @@
 ;; (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
 ;; (global-copilot-mode)
 
+;; tramp config to be compatible with defautl ssh config
+(setq tramp-default-method "ssh")
+(setq tramp-ssh-controlmaster-options
+      "-o ControlMaster=auto -o ControlPath='~/.ssh/sockets/%%r@%%h:%%p' -o ControlPersist=3600")
 
 ;; org config
 (require 'org)
