@@ -103,6 +103,10 @@
   (seq-filter 'g4z3-org-refile-filter
     (mapcar 'g4z3-expand-path-by-project (projectile-current-project-files)))
   )
+
+;; auto remove trailing whitespaces on saving
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; navigation key bindings
 (global-set-key (kbd "C-S-p") 'scroll-down-line)
 (global-set-key (kbd "C-S-n") 'scroll-up-line)
