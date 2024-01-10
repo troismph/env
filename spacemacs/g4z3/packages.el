@@ -49,7 +49,8 @@
     copilot
     git-auto-commit-mode
     move-text
-    crux)
+    crux
+    sqlite3)
   "The list of Lisp packages required by the g4z3 layer.
 
 Each entry is either:
@@ -139,4 +140,8 @@ Each entry is either:
 
 (defun g4z3/init-crux ()
   (use-package crux)
+  )
+
+(defun g4z3/init-sqlite3 ()
+  (use-package sqlite3)
   )

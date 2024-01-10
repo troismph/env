@@ -26,8 +26,7 @@
 (add-hook 'python-mode-hook #'g4z3/setup-python-lsp)
 
 ;; completely disable emacs' own version control
-;; (setq vc-handled-backends nil)
-
+(setq vc-handled-backends nil)
 
 ;; org config
 (require 'org)
