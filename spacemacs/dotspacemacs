@@ -61,6 +61,7 @@ This function should only modify configuration layer settings."
      spacemacs-project
      treemacs
      dap
+     hackernews
      g4z3)
 
 
