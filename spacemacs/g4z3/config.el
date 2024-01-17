@@ -58,6 +58,7 @@
 
 (setq org-outline-path-complete-in-steps nil)
 (setq org-lowest-priority 68)
+(setq org-startup-truncated nil)
 
 (defun org-agenda-contemplations()
   (interactive)
