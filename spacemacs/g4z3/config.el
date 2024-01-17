@@ -98,8 +98,11 @@
   (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
   (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
   (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
-(add-hook 'prog-mode-hook 'copilot-mode)
+;; default copilot-enable-predicates includes evil-insert-state-p which does not work when i am not in evil mode
+;; so i disable it and only enable copilot--buffer-changed
+(setq copilot-enable-predicates '(copilot--buffer-changed))
 (setq copilot-idle-delay 1)
+(add-hook 'prog-mode-hook 'copilot-mode)
 
 ;; navigation key bindings
 (global-set-key (kbd "C-S-p") 'scroll-down-line)
