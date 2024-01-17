@@ -86,6 +86,21 @@
 ;; auto remove trailing whitespaces on saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; treemacs: fixed window width. DAP mode sometimes changes treemacs window width
+(setq treemacs-lock-width t)
+
+;; copilot settings
+(with-eval-after-load 'company
+  ;; disable inline previews
+  (delq 'company-preview-if-just-one-frontend company-frontends))
+(with-eval-after-load 'copilot
+  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
+  (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
+(add-hook 'prog-mode-hook 'copilot-mode)
+(setq copilot-idle-delay 1)
+
 ;; navigation key bindings
 (global-set-key (kbd "C-S-p") 'scroll-down-line)
 (global-set-key (kbd "C-S-n") 'scroll-up-line)
