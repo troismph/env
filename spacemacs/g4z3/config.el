@@ -92,7 +92,12 @@
 
 ;; dap mode configs
 ;; (setq dap-auto-configure-features '(locals))
-(setq dap-auto-configure-features '(sessions locals controls tooltip))
+(setq dap-auto-configure-features '(sessions locals controls tooltip repl))
+
+(with-eval-after-load 'dap-hydra
+ (defhydra+ dap-hydra (:color pink :hint nil :foreign-keys run)
+  ("sr" dap-ui-repl "repl" :exit (dap-hydra/nil))))
+
 ;; copilot settings
 (with-eval-after-load 'company
   ;; disable inline previews
