@@ -90,6 +90,9 @@
 ;; treemacs: fixed window width. DAP mode sometimes changes treemacs window width
 (setq treemacs-lock-width t)
 
+;; dap mode configs
+;; (setq dap-auto-configure-features '(locals))
+(setq dap-auto-configure-features '(sessions locals controls tooltip))
 ;; copilot settings
 (with-eval-after-load 'company
   ;; disable inline previews

@@ -602,7 +602,9 @@ This function is called at the very end of Spacemacs initialization."
      (javascript-backend . tide)
      (javascript-backend . tern)
      (javascript-backend . lsp)))
- '(warning-suppress-types '(((copilot copilot-no-mode-indent)))))
+ '(warning-suppress-types
+   '(((copilot copilot-no-mode-indent))
+     ((copilot copilot-no-mode-indent)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
