@@ -50,7 +50,8 @@
     git-auto-commit-mode
     move-text
     crux
-    sqlite3)
+    sqlite3
+    ag)
   "The list of Lisp packages required by the g4z3 layer.
 
 Each entry is either:
@@ -133,4 +134,8 @@ Each entry is either:
 
 (defun g4z3/init-sqlite3 ()
   (use-package sqlite3)
+  )
+
+(defun g4z3/init-ag ()
+  (use-package ag)
   )
