@@ -90,9 +90,9 @@
 ;; treemacs: fixed window width. DAP mode sometimes changes treemacs window width
 (setq treemacs-lock-width t)
 
-;; dap mode configs
+;; dap mode configs, remove 'breakpoints' for better performance over trampa
 ;; (setq dap-auto-configure-features '(locals))
-(setq dap-auto-configure-features '(sessions locals controls tooltip repl))
+(setq dap-auto-configure-features '(sessions locals controls tooltip))
 
 (with-eval-after-load 'dap-hydra
  (defhydra+ dap-hydra (:color pink :hint nil :foreign-keys run)
