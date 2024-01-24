@@ -30,6 +30,7 @@
 
 ;; org config
 (require 'org)
+(setq org-log-into-drawer t)
 (defun capture-report-date-file (path)
   (let ((name (read-string "Name: ")))
     (expand-file-name (format "%s-%s.org"
