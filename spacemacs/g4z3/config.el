@@ -28,9 +28,9 @@
 ;; completely disable emacs' own version control
 (setq vc-handled-backends nil)
 
-
 ;; org config
 (require 'org)
+(setq org-log-into-drawer t)
 (defun capture-report-date-file (path)
   (let ((name (read-string "Name: ")))
     (expand-file-name (format "%s-%s.org"
@@ -59,6 +59,7 @@
 
 (setq org-outline-path-complete-in-steps nil)
 (setq org-lowest-priority 68)
+(setq org-startup-truncated nil)
 
 (defun org-agenda-contemplations()
   (interactive)
@@ -86,6 +87,32 @@
 
 ;; auto remove trailing whitespaces on saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; treemacs: fixed window width. DAP mode sometimes changes treemacs window width
+(setq treemacs-lock-width t)
+
+;; dap mode configs, remove 'breakpoints' for better performance over trampa
+;; (setq dap-auto-configure-features '(locals))
+(setq dap-auto-configure-features '(sessions locals controls tooltip))
+
+(with-eval-after-load 'dap-hydra
+ (defhydra+ dap-hydra (:color pink :hint nil :foreign-keys run)
+  ("sr" dap-ui-repl "repl" :exit (dap-hydra/nil))))
+
+;; copilot settings
+(with-eval-after-load 'company
+  ;; disable inline previews
+  (delq 'company-preview-if-just-one-frontend company-frontends))
+(with-eval-after-load 'copilot
+  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
+  (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
+;; default copilot-enable-predicates includes evil-insert-state-p which does not work when i am not in evil mode
+;; so i disable it and only enable copilot--buffer-changed
+(setq copilot-enable-predicates '(copilot--buffer-changed))
+(setq copilot-idle-delay 1)
+(add-hook 'prog-mode-hook 'copilot-mode)
 
 ;; navigation key bindings
 (global-set-key (kbd "C-S-p") 'scroll-down-line)

@@ -49,7 +49,9 @@
     copilot
     git-auto-commit-mode
     move-text
-    crux)
+    crux
+    sqlite3
+    ag)
   "The list of Lisp packages required by the g4z3 layer.
 
 Each entry is either:
@@ -112,20 +114,9 @@ Each entry is either:
   (require 'quelpa-use-package)
   (use-package copilot
     :quelpa (copilot :fetcher github
-                     :repo "zerolfx/copilot.el"
+                     :repo "copilot-emacs/copilot.el"
                      :branch "main"
                      :files ("dist" "*.el"))
-    :config
-    (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-    (global-copilot-mode)
-    (with-eval-after-load 'company
-      ;; disable inline previews
-      (delq 'company-preview-if-just-one-frontend company-frontends))
-    (with-eval-after-load 'copilot
-      (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-      (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
-      (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
-      (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
     )
   )
 
@@ -139,4 +130,12 @@ Each entry is either:
 
 (defun g4z3/init-crux ()
   (use-package crux)
+  )
+
+(defun g4z3/init-sqlite3 ()
+  (use-package sqlite3)
+  )
+
+(defun g4z3/init-ag ()
+  (use-package ag)
   )
