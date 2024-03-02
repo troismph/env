@@ -1,0 +1,9 @@
+#---------------------------------------------------#
+## 更新：2024-02-28 02:59:47
+## 感谢：https://github.com/Hackl0us/SS-Rule-Snippet
+## 链接：https://sub-global02-buh8f7aed6fdh3he.z01.azurefd.net/link/KqqgZCHWhpUmlnVX?clash=1
+#---------------------------------------------------#
+
+# 规则
+rules:
+  - DOMAIN-SUFFIX,proton.me,Proxy

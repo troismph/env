@@ -38,6 +38,7 @@
 
 ;; org config
 (require 'org)
+(setq org-directory "~/Documents/org")
 (setq org-log-into-drawer t)
 (defun capture-report-date-file (path)
   (let ((name (read-string "Name: ")))
@@ -50,10 +51,6 @@
       '(("c" "g4z3's default capture template" entry
          (file "~/Documents/org/capture.org")
          (file "~/Documents/org/templates/template.capture.org"))
-        ("j" "journal template" entry
-         (file "~/Documents/org/journal.org")
-         (file "~/Documents/org/templates/template.journal.org")
-         :empty-lines-before 1)
         ("m" "memo" entry
          (file (lambda () (capture-report-date-file  "~/Documents/org/memos")))
          (file "~/Documents/org/templates/template.capture.org"))
@@ -69,6 +66,7 @@
 (setq org-lowest-priority 68)
 (setq org-startup-truncated nil)
 
+(setq org-agenda-files "~/Documents/org/agenda_files")
 (defun org-agenda-contemplations()
   (interactive)
   (org-tags-view nil "+DEADLINE=\"\"+SCHEDULED=\"\"/!")
