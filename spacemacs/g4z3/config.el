@@ -25,6 +25,14 @@
 
 (add-hook 'python-mode-hook #'g4z3/setup-python-lsp)
 
+;; (with-eval-after-load 'lsp-mode
+;;   (defun lsp-projectile-workspace-root ()
+;;     "Get the root of the project from projectile."
+;;     (when (and (fboundp 'projectile-project-root) (projectile-project-root))
+;;       (projectile-project-root)))
+
+;;   (setq lsp-workspace-folders-functions '(lsp-projectile-workspace-root)))
+
 ;; completely disable emacs' own version control
 (setq vc-handled-backends nil)
 
@@ -113,6 +121,12 @@
 (setq copilot-enable-predicates '(copilot--buffer-changed))
 (setq copilot-idle-delay 1)
 (add-hook 'prog-mode-hook 'copilot-mode)
+
+;; custom functions
+(defun my-print-lsp-workspace-root ()
+  "Print the root directory of the current lsp workspace."
+  (interactive)
+  (message "LSP Workspace Root: %s" (lsp-workspace-root)))
 
 ;; navigation key bindings
 (global-set-key (kbd "C-S-p") 'scroll-down-line)
