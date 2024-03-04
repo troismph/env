@@ -75,6 +75,11 @@
   (interactive)
   (org-agenda-list)
   )
+(setq org-agenda-prefix-format
+      '((agenda . " %i %-12:c%?-12t% s%b") ;; Include breadcrumbs in the agenda view
+        (todo   . " %i %-12:c %b")          ;; Include breadcrumbs in the todo view
+        (tags   . " %i %-12:c %b")
+        (search . " %i %-12:c %b")))
 (setq org-src-window-setup (quote other-window))
 (setq g4z3-org-refile-exclude '("journal.org"))
 (setq g4z3-org-refile-exclude-regex "journal")
@@ -125,6 +130,19 @@
   "Print the root directory of the current lsp workspace."
   (interactive)
   (message "LSP Workspace Root: %s" (lsp-workspace-root)))
+
+;; it's said this improve performance over tramp
+;; ref https://sideshowcoder.com/2017/10/24/projectile-and-tramp/
+(defadvice projectile-on (around exlude-tramp activate)
+  "This should disable projectile when visiting a remote file"
+  (unless  (--any? (and it (file-remote-p it))
+                   (list
+                    (buffer-file-name)
+                    list-buffers-directory
+                    default-directory
+                    dired-directory))
+    ad-do-it))
+(setq projectile-mode-line "Projectile")
 
 ;; navigation key bindings
 (global-set-key (kbd "C-S-p") 'scroll-down-line)

@@ -62,7 +62,8 @@ This function should only modify configuration layer settings."
      treemacs
      dap
      hackernews
-     g4z3)
+     g4z3
+     )
 
 
    ;; List of additional packages that will be installed without being wrapped
