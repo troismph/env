@@ -144,6 +144,11 @@
     ad-do-it))
 (setq projectile-mode-line "Projectile")
 
+(setq pytest-cmd-flags "-x -s -v")
+
+(push "~/src/env/spacemacs/g4z3" load-path)
+(require 'thing-edit)
+
 ;; navigation key bindings
 (global-set-key (kbd "C-S-p") 'scroll-down-line)
 (global-set-key (kbd "C-S-n") 'scroll-up-line)
@@ -154,3 +159,5 @@
 (global-set-key [remap move-beginning-of-line] #'crux-move-beginning-of-line)
 (global-set-key (kbd "C-+") 'spacemacs/scale-up-font)
 (global-set-key (kbd "C--") 'spacemacs/scale-down-font)
+(global-set-key (kbd "M-s") 'thing-copy-symbol)
+(global-set-key (kbd "M-y") 'thing-replace-symbol)
