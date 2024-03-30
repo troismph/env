@@ -161,3 +161,4 @@
 (global-set-key (kbd "C--") 'spacemacs/scale-down-font)
 (global-set-key (kbd "M-s") 'thing-copy-symbol)
 (global-set-key (kbd "M-y") 'thing-replace-symbol)
+(global-set-key (kbd "C-s-n") 'origami-recursively-toggle-node)
