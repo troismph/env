@@ -19,11 +19,17 @@
 (setq tramp-ssh-controlmaster-options
       "-o ControlMaster=auto -o ControlPath='~/.ssh/sockets/%%r@%%h:%%p' -o ControlPersist=3600")
 
-(defun g4z3/setup-python-lsp ()
-  "Configure LSP clients for Python, enabling only `pylsp` and `pylsp-tramp`."
-  (setq lsp-enabled-clients '(pylsp pylsp-tramp)))  ; Enable `pylsp` and `pylsp-tramp` only.
+(with-eval-after-load 'lsp-mode
+  (setq lsp-enabled-clients '(pylsp-tramp pylsp))
+  (setq lsp-client-packages '(pylsp-tramp pylsp))
+)
+;; (defun g4z3/setup-python-lsp ()
+;;   "Configure LSP clients for Python, enabling only `pylsp` and `pylsp-tramp`."
+;;   (setq lsp-enabled-clients '(pylsp pylsp-tramp))
+;;   (setq lsp-client-packages '(pylsp pylsp-tramp))
+;;   )  ; Enable `pylsp` and `pylsp-tramp` only.
 
-(add-hook 'python-mode-hook #'g4z3/setup-python-lsp)
+;; (add-hook 'python-mode-hook #'g4z3/setup-python-lsp)
 
 ;; (with-eval-after-load 'lsp-mode
 ;;   (defun lsp-projectile-workspace-root ()
@@ -40,6 +46,7 @@
 (require 'org)
 (setq org-directory "~/Documents/org")
 (setq org-log-into-drawer t)
+(setq org-hide-drawer-startup t)
 (defun capture-report-date-file (path)
   (let ((name (read-string "Name: ")))
     (expand-file-name (format "%s-%s.org"
@@ -53,6 +60,9 @@
          (file "~/Documents/org/templates/template.capture.org"))
         ("m" "memo" entry
          (file (lambda () (capture-report-date-file  "~/Documents/org/memos")))
+         (file "~/Documents/org/templates/template.capture.org"))
+        ("a" "alphaith" entry
+         (file (lambda () (capture-report-date-file  "~/Documents/org/alphaith/memos")))
          (file "~/Documents/org/templates/template.capture.org"))
         )
 )
@@ -125,6 +135,28 @@
   "Print the root directory of the current lsp workspace."
   (interactive)
   (message "LSP Workspace Root: %s" (lsp-workspace-root)))
+
+(setq user-mail-address "ph@alphaith.com")
+
+;; gnus mail config
+;; Get email, and store in nnml
+(setq gnus-secondary-select-methods
+      '(
+        (nnimap "feishu"
+                (nnimap-address
+                 "imap.feishu.cn")
+                (nnimap-server-port 993)
+                (nnimap-stream ssl))
+        ))
+
+;; Send email via Gmail:
+(setq message-send-mail-function 'smtpmail-send-it
+      smtpmail-default-smtp-server "smtp.feishu.cn")
+
+;; Store email in ~/gmail directory
+(setq nnml-directory "~/Documents/mail/alphaith")
+(setq message-directory "~/Documents/mail/alphaith")
+
 
 ;; navigation key bindings
 (global-set-key (kbd "C-S-p") 'scroll-down-line)

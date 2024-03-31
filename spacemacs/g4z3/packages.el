@@ -51,7 +51,8 @@
     move-text
     crux
     sqlite3
-    ag)
+    ag
+    org-mime)
   "The list of Lisp packages required by the g4z3 layer.
 
 Each entry is either:
@@ -138,4 +139,8 @@ Each entry is either:
 
 (defun g4z3/init-ag ()
   (use-package ag)
+  )
+
+(defun g4z3/init-org-mime ()
+  (use-package org-mime)
   )
