@@ -106,6 +106,9 @@
     (mapcar 'g4z3-expand-path-by-project (projectile-current-project-files)))
   )
 
+;; export org with priority cookies
+(setq org-export-with-priority 1)
+
 ;; auto remove trailing whitespaces on saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
