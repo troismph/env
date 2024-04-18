@@ -112,6 +112,15 @@
 ;; latex preview scale
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
 
+;; babel settings
+;; org-babel-load-languages’s value is ((emacs-lisp . t))
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(
+   (emacs-lisp . t)
+   (python . t)
+   ))
+
 ;; auto remove trailing whitespaces on saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
