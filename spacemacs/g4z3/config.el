@@ -109,6 +109,9 @@
 ;; export org with priority cookies
 (setq org-export-with-priority 1)
 
+;; latex preview scale
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+
 ;; auto remove trailing whitespaces on saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
