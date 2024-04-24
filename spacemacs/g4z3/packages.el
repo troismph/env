@@ -42,8 +42,8 @@
 
 (defconst g4z3-packages
   '(
-    pyim
     pyim-basedict
+    pyim
     quelpa
     quelpa-use-package
     copilot
@@ -87,7 +87,11 @@ Each entry is either:
     (setq default-input-method "pyim")
     ;; 显示5个候选词。
     (setq pyim-page-length 5)
+    (require 'pyim-basedict)
+    (pyim-basedict-enable)
     (pyim-default-scheme 'quanpin)
+    ;; no fuzzy pinyin
+    (setq pyim-pinyin-fuzzy-alist nil)
     ;; 半角标点符号
     (setq-default pyim-punctuation-translate-p '(no))
     ;; 设定默认输入法和切换热键
