@@ -19,10 +19,10 @@
 (setq tramp-ssh-controlmaster-options
       "-o ControlMaster=auto -o ControlPath='~/.ssh/sockets/%%r@%%h:%%p' -o ControlPersist=3600")
 
-(with-eval-after-load 'lsp-mode
-  (setq lsp-enabled-clients '(pylsp-tramp pylsp))
-  (setq lsp-client-packages '(pylsp-tramp pylsp))
-)
+;; (with-eval-after-load 'lsp-mode
+;;   (setq lsp-enabled-clients '(pylsp-tramp pylsp))
+;;   (setq lsp-client-packages '(pylsp-tramp pylsp))
+;; )
 ;; (defun g4z3/setup-python-lsp ()
 ;;   "Configure LSP clients for Python, enabling only `pylsp` and `pylsp-tramp`."
 ;;   (setq lsp-enabled-clients '(pylsp pylsp-tramp))

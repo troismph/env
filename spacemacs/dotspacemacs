@@ -64,7 +64,9 @@ This function should only modify configuration layer settings."
      treemacs
      dap
      hackernews
-     (conda :variables conda-anaconda-home "/opt/pyenv/mambaforge")
+     (conda :variables conda-anaconda-home "/opt/pyenv/mambaforge" conda-env-home-directory "/opt/pyenv/mambaforge")
+     (c-c++ :variables c-c++-backend 'lsp-clangd)
+     (cmake :variables cmake-backend 'lsp)
      g4z3
      )
 
