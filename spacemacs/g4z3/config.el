@@ -146,6 +146,12 @@
   (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
 ;; default copilot-enable-predicates includes evil-insert-state-p which does not work when i am not in evil mode
 ;; so i disable it and only enable copilot--buffer-changed
+
+;; copilot needs proxy on server idc-server66, so set proxy by host name
+;; (defun hostname-based-config ()
+;;   (cond ((string= (system-name) "idc-server66") (setq copilot-network-proxy '(:host "127.0.0.1" :port 17890))))
+;;   )
+;; (hostname-based-config)
 (setq copilot-enable-predicates '(copilot--buffer-changed))
 (setq copilot-idle-delay 1)
 (add-hook 'prog-mode-hook 'copilot-mode)
