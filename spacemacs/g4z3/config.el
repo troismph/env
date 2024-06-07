@@ -6,7 +6,7 @@
 (delete-selection-mode 1)
 ;; scratch default lisp mode
 (setq dotspacemacs-scratch-mode 'lisp-mode)
-(setq dotspacemacs-scratch-buffer-unkillable 1)
+;; (setq dotspacemacs-scratch-buffer-unkillable 1)
 
 ;; for remote lsp to work...
 (with-eval-after-load 'tramp

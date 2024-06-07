@@ -46,7 +46,7 @@
     pyim
     quelpa
     quelpa-use-package
-    copilot
+    ;; copilot
     git-auto-commit-mode
     move-text
     crux
@@ -115,15 +115,15 @@ Each entry is either:
   (use-package quelpa-use-package)
   )
 
-(defun g4z3/init-copilot ()
-  (require 'quelpa-use-package)
-  (use-package copilot
-    :quelpa (copilot :fetcher github
-                     :repo "copilot-emacs/copilot.el"
-                     :branch "main"
-                     :files ("dist" "*.el"))
-    )
-  )
+;; (defun g4z3/init-copilot ()
+;;   (require 'quelpa-use-package)
+;;   (use-package copilot
+;;     :quelpa (copilot :fetcher github
+;;                      :repo "copilot-emacs/copilot.el"
+;;                      :branch "main"
+;;                      :files ("dist" "*.el"))
+;;     )
+;;   )
 
 (defun g4z3/init-git-auto-commit-mode ()
   (use-package git-auto-commit-mode)
