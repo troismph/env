@@ -42,10 +42,12 @@
 
 (defconst g4z3-packages
   '(
-    pyim-basedict
+    ;; quelpa now initialized from dotspacemacs
+    ;; quelpa
+    ;; quelpa-use-package
     pyim
-    quelpa
-    quelpa-use-package
+    pyim-basedict
+    ;; copilot now initalized from dotspacemacs
     ;; copilot
     git-auto-commit-mode
     move-text
@@ -80,6 +82,16 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
+;; (defun g4z3/init-quelpa ()
+;;   (use-package quelpa
+;;     :ensure t)
+;;   )
+
+;; (defun g4z3/init-quelpa-use-package ()
+;;   (use-package quelpa-use-package
+;;     :ensure t)
+;;   )
+
 (defun g4z3/init-pyim ()
   ;; pyim settings
   (use-package pyim
@@ -107,16 +119,9 @@ Each entry is either:
     )
   )
 
-(defun g4z3/init-quelpa ()
-  (use-package quelpa)
-  )
-
-(defun g4z3/init-quelpa-use-package ()
-  (use-package quelpa-use-package)
-  )
-
 ;; (defun g4z3/init-copilot ()
 ;;   (require 'quelpa-use-package)
+;;   (require 'quelpa)
 ;;   (use-package copilot
 ;;     :quelpa (copilot :fetcher github
 ;;                      :repo "copilot-emacs/copilot.el"
