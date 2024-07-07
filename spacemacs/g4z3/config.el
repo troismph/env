@@ -121,6 +121,13 @@
    (python . t)
    ))
 
+;; custom command to insert time stamp with seconds
+(defun org-insert-long-timestamp ()
+  "Insert the current timestamp with seconds in Org mode."
+  (interactive)
+  (let ((current-time (format-time-string "[%Y-%m-%d %a %H:%M:%S]")))
+    (insert current-time)))
+
 ;; auto remove trailing whitespaces on saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -211,6 +218,7 @@
 (global-set-key [remap move-beginning-of-line] #'crux-move-beginning-of-line)
 (global-set-key (kbd "C-+") 'spacemacs/scale-up-font)
 (global-set-key (kbd "C--") 'spacemacs/scale-down-font)
+(global-set-key (kbd "M-k") 'thing-cut-symbol)
 (global-set-key (kbd "M-s") 'thing-copy-symbol)
 (global-set-key (kbd "M-y") 'thing-replace-symbol)
 (global-set-key (kbd "C-s-n") 'origami-recursively-toggle-node)
