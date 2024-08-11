@@ -575,17 +575,17 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
           ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
           ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
   ;; (setq quelpa-update-melpa-p nil) ; Disable MELPA updates for Quelpa
-  (unless (package-installed-p 'quelpa)
-    (with-temp-buffer
-      (url-insert-file-contents
-       "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
-      (eval-buffer)
-      (quelpa-self-upgrade)))
-  (quelpa
-   '(quelpa-use-package
-     :fetcher git
-     :url "https://github.com/quelpa/quelpa-use-package.git"))
-  (require 'quelpa-use-package)
+  ;; (unless (package-installed-p 'quelpa)
+  ;;   (with-temp-buffer
+  ;;     (url-insert-file-contents
+  ;;      "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
+  ;;     (eval-buffer)
+  ;;     (quelpa-self-upgrade)))
+  ;; (quelpa
+  ;;  '(quelpa-use-package
+  ;;    :fetcher git
+  ;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
+  ;; (require 'quelpa-use-package)
   ;; (use-package quelpa
   ;;   :ensure t)
   ;; (use-package quelpa-use-package
