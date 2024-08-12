@@ -10,7 +10,7 @@
 
 ;; for remote lsp to work...
 (with-eval-after-load 'tramp
-;;  (add-to-list 'tramp-remote-path "/home/ph/.local/bin")
+  ;;  (add-to-list 'tramp-remote-path "/home/ph/.local/bin")
   (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
   )
 
@@ -18,6 +18,8 @@
 (setq tramp-default-method "ssh")
 (setq tramp-ssh-controlmaster-options
       "-o ControlMaster=auto -o ControlPath='~/.ssh/sockets/%%r@%%h:%%p' -o ControlPersist=3600")
+
+(add-hook 'python-mode-hook 'eglot-ensure)
 
 ;; (with-eval-after-load 'lsp-mode
 ;;   (setq lsp-enabled-clients '(pylsp-tramp pylsp))
@@ -65,7 +67,7 @@
          (file (lambda () (capture-report-date-file  "~/Documents/org/alphaith/memos")))
          (file "~/Documents/org/templates/template.capture.org"))
         )
-)
+      )
 
 (setq org-icalendar-timezone "Asia/Shanghai")
 (setq org-log-done 'time)
@@ -103,7 +105,7 @@
   )
 (defun g4z3-org-refile-targets ()
   (seq-filter 'g4z3-org-refile-filter
-    (mapcar 'g4z3-expand-path-by-project (projectile-current-project-files)))
+              (mapcar 'g4z3-expand-path-by-project (projectile-current-project-files)))
   )
 
 ;; export org with priority cookies
@@ -139,8 +141,8 @@
 (setq dap-auto-configure-features '(sessions locals controls tooltip))
 
 (with-eval-after-load 'dap-hydra
- (defhydra+ dap-hydra (:color pink :hint nil :foreign-keys run)
-  ("sr" dap-ui-repl "repl" :exit (dap-hydra/nil))))
+  (defhydra+ dap-hydra (:color pink :hint nil :foreign-keys run)
+    ("sr" dap-ui-repl "repl" :exit (dap-hydra/nil))))
 
 ;; copilot settings
 (with-eval-after-load 'company
