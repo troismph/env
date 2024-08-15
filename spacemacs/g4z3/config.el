@@ -8,10 +8,13 @@
 (setq dotspacemacs-scratch-mode 'lisp-mode)
 ;; (setq dotspacemacs-scratch-buffer-unkillable 1)
 
-;; for remote lsp to work...
+;; remote virtual env activation
+
+;; for remote lsp to work, very rude...
 (with-eval-after-load 'tramp
-;;  (add-to-list 'tramp-remote-path "/home/ph/.local/bin")
-  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+  (add-to-list 'tramp-remote-path "/home/ph/.local/bin")
+  (add-to-list 'tramp-remote-path "/home/ph/.virtualenvs/a7a311/bin")
+  (add-to-list 'tramp-remote-process-environment "VIRTUAL_ENV=/home/ph/.virtualenvs/a7a311")
   )
 
 ;; tramp config to be compatible with defautl ssh config
@@ -65,7 +68,7 @@
          (file (lambda () (capture-report-date-file  "~/Documents/org/alphaith/memos")))
          (file "~/Documents/org/templates/template.capture.org"))
         )
-)
+      )
 
 (setq org-icalendar-timezone "Asia/Shanghai")
 (setq org-log-done 'time)
@@ -103,7 +106,7 @@
   )
 (defun g4z3-org-refile-targets ()
   (seq-filter 'g4z3-org-refile-filter
-    (mapcar 'g4z3-expand-path-by-project (projectile-current-project-files)))
+              (mapcar 'g4z3-expand-path-by-project (projectile-current-project-files)))
   )
 
 ;; export org with priority cookies
@@ -139,8 +142,8 @@
 (setq dap-auto-configure-features '(sessions locals controls tooltip))
 
 (with-eval-after-load 'dap-hydra
- (defhydra+ dap-hydra (:color pink :hint nil :foreign-keys run)
-  ("sr" dap-ui-repl "repl" :exit (dap-hydra/nil))))
+  (defhydra+ dap-hydra (:color pink :hint nil :foreign-keys run)
+    ("sr" dap-ui-repl "repl" :exit (dap-hydra/nil))))
 
 ;; copilot settings
 (with-eval-after-load 'company
