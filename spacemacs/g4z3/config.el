@@ -8,10 +8,13 @@
 (setq dotspacemacs-scratch-mode 'lisp-mode)
 ;; (setq dotspacemacs-scratch-buffer-unkillable 1)
 
-;; for remote lsp to work...
+;; remote virtual env activation
+
+;; for remote lsp to work, very rude...
 (with-eval-after-load 'tramp
-  ;;  (add-to-list 'tramp-remote-path "/home/ph/.local/bin")
-  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+  (add-to-list 'tramp-remote-path "/home/ph/.local/bin")
+  (add-to-list 'tramp-remote-path "/home/ph/.virtualenvs/a7a311/bin")
+  (add-to-list 'tramp-remote-process-environment "VIRTUAL_ENV=/home/ph/.virtualenvs/a7a311")
   )
 
 ;; tramp config to be compatible with defautl ssh config
