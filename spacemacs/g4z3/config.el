@@ -20,7 +20,7 @@
 ;; tramp config to be compatible with defautl ssh config
 (setq tramp-default-method "ssh")
 (setq tramp-ssh-controlmaster-options
-      "-o ControlMaster=auto -o ControlPath='~/.ssh/sockets/%%r@%%h:%%p' -o ControlPersist=3600")
+      "-o ControlMaster=auto -o ControlPath='~/.ssh/sockets/tramp-%%r@%%h:%%p' -o ControlPersist=3600")
 
 (add-hook 'python-mode-hook 'eglot-ensure)
 
