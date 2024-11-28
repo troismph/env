@@ -22,7 +22,7 @@
 (setq tramp-ssh-controlmaster-options
       "-o ControlMaster=auto -o ControlPath='~/.ssh/sockets/tramp-%%r@%%h:%%p' -o ControlPersist=3600")
 
-(add-hook 'python-mode-hook 'eglot-ensure)
+;; (add-hook 'python-mode-hook 'eglot-ensure)
 
 ;; (with-eval-after-load 'lsp-mode
 ;;   (setq lsp-enabled-clients '(pylsp-tramp pylsp))
@@ -81,7 +81,34 @@
 (setq org-lowest-priority 68)
 (setq org-startup-truncated nil)
 
-(setq org-agenda-files "~/Documents/org/agenda_files")
+;; dynamic agenda file list, extracted from tracker.org
+(defun my/org-extract-links (file)
+  "Extract all links from the specified Org FILE and return them as a list."
+  (with-current-buffer (find-file-noselect file)
+    (org-element-map (org-element-parse-buffer) 'link
+      (lambda (link)
+        (org-element-property :raw-link link)))))
+
+(defun my/org-add-linked-files-to-agenda (file)
+  "Extract links from the specified Org FILE, clear `org-agenda-files', and add the extracted file links (without the `file:` scheme) along with the root file."
+  (interactive "fSelect Org file: ")
+  (let* ((links (my/org-extract-links file))
+         (file-links (seq-filter (lambda (link)
+                                   (string-prefix-p "file:" link))
+                                 links))
+         (cleaned-links (mapcar (lambda (link)
+                                  (expand-file-name (substring link 5) (file-name-directory file)))
+                                file-links))
+         (all-files (cons file cleaned-links)))
+    ;; Clear the org-agenda-files list
+    (setq org-agenda-files nil)
+    ;; Add the root file and the cleaned links to org-agenda-files
+    (setq org-agenda-files all-files)
+    (message "Cleared org-agenda-files and added the following files:\n%s"
+             (mapconcat #'identity all-files "\n"))))
+
+(my/org-add-linked-files-to-agenda "~/Documents/notes/tracker.org")
+
 (defun org-agenda-contemplations()
   (interactive)
   (org-tags-view nil "+DEADLINE=\"\"+SCHEDULED=\"\"/!")
