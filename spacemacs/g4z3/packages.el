@@ -42,19 +42,17 @@
 
 (defconst g4z3-packages
   '(
-    ;; quelpa now initialized from dotspacemacs
-    ;; quelpa
-    ;; quelpa-use-package
     pyim
     pyim-basedict
-    ;; copilot now initalized from dotspacemacs
-    ;; copilot
+    copilot
+    copilot-chat
     git-auto-commit-mode
     move-text
     crux
     sqlite3
     ag
-    org-mime)
+    org-mime
+    )
   "The list of Lisp packages required by the g4z3 layer.
 
 Each entry is either:
@@ -119,16 +117,13 @@ Each entry is either:
     )
   )
 
-;; (defun g4z3/init-copilot ()
-;;   (require 'quelpa-use-package)
-;;   (require 'quelpa)
-;;   (use-package copilot
-;;     :quelpa (copilot :fetcher github
-;;                      :repo "copilot-emacs/copilot.el"
-;;                      :branch "main"
-;;                      :files ("dist" "*.el"))
-;;     )
-;;   )
+(defun g4z3/init-copilot ()
+  (use-package copilot)
+  )
+
+(defun g4z3/init-copilot-chat ()
+  (use-package copilot-chat)
+  )
 
 (defun g4z3/init-git-auto-commit-mode ()
   (use-package git-auto-commit-mode)

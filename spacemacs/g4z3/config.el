@@ -138,6 +138,8 @@
               (mapcar 'g4z3-expand-path-by-project (projectile-current-project-files)))
   )
 
+(setq org-refile-use-outline-path 'file) ;; Include filenames in the refile path
+
 ;; export org with priority cookies
 (setq org-export-with-priority 1)
 
@@ -193,7 +195,7 @@
 ;; (hostname-based-config)
 (setq copilot-enable-predicates '(copilot--buffer-changed))
 (setq copilot-idle-delay 1)
-(add-hook 'prog-mode-hook 'copilot-mode)
+;; (add-hook 'prog-mode-hook 'copilot-mode)
 
 ;; custom functions
 (defun my-print-lsp-workspace-root ()

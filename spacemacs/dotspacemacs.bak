@@ -67,9 +67,10 @@ This function should only modify configuration layer settings."
      (conda :variables conda-anaconda-home "/opt/pyenv/mambaforge" conda-env-home-directory "/opt/pyenv/mambaforge")
      (c-c++ :variables c-c++-backend 'lsp-clangd)
      (cmake :variables cmake-backend 'lsp)
-     g4z3
+     ;; g4z3
      ;; themes-megapack
      )
+
 
    ;; List of additional packages that will be installed without being wrapped
    ;; in a layer (generally the packages are installed only and should still be
@@ -80,7 +81,10 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
-   '()
+   '((copilot :location (recipe
+                         :fetcher github
+                         :repo "copilot-emacs/copilot.el"
+                         :files ("*.el"))))
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -127,6 +131,14 @@ It should only modify the values of Spacemacs settings."
    ;;   ./emacs --dump-file=$HOME/.emacs.d/.cache/dumps/spacemacs-27.1.pdmp
    ;; (default (format "spacemacs-%s.pdmp" emacs-version))
    dotspacemacs-emacs-dumper-dump-file (format "spacemacs-%s.pdmp" emacs-version)
+
+   ;; If non-nil ELPA repositories are contacted via HTTPS whenever it's
+   ;; possible. Set it to nil if you have no way to use HTTPS in your
+   ;; environment, otherwise it is strongly recommended to let it set to t.
+   ;; This variable has no effect if Emacs is launched with the parameter
+   ;; `--insecure' which forces the value of this variable to nil.
+   ;; (default t)
+   dotspacemacs-elpa-https t
 
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    ;; (default 5)
@@ -244,12 +256,9 @@ It should only modify the values of Spacemacs settings."
 
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
-   ;; with 2 themes variants, one dark and one light). A theme from external
-   ;; package can be defined with `:package', or a theme can be defined with
-   ;; `:location' to download the theme package, refer the themes section in
-   ;; DOCUMENTATION.org for the full theme specifications.
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light)
+   ;; with 2 themes variants, one dark and one light)
+   dotspacemacs-themes '(spacemacs-light
+                         spacemacs-dark)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -264,13 +273,11 @@ It should only modify the values of Spacemacs settings."
    ;; (default t)
    dotspacemacs-colorize-cursor-according-to-state t
 
-   ;; Default font or prioritized list of fonts. This setting has no effect when
-   ;; running Emacs in terminal. The font set here will be used for default and
-   ;; fixed-pitch faces. The `:size' can be specified as
+   ;; Default font or prioritized list of fonts. The `:size' can be specified as
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 10.0
+                               :size 12.0
                                :weight normal
                                :width normal)
 
@@ -347,10 +354,6 @@ It should only modify the values of Spacemacs settings."
    ;; Which-key frame position. Possible values are `right', `bottom' and
    ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
    ;; right; if there is insufficient space it displays it at the bottom.
-   ;; It is also possible to use a posframe with the following cons cell
-   ;; `(posframe . position)' where position can be one of `center',
-   ;; `top-center', `bottom-center', `top-left-corner', `top-right-corner',
-   ;; `top-right-corner', `bottom-left-corner' or `bottom-right-corner'
    ;; (default 'bottom)
    dotspacemacs-which-key-position 'bottom
 
@@ -360,22 +363,6 @@ It should only modify the values of Spacemacs settings."
    ;; displays the buffer in a same-purpose window even if the buffer can be
    ;; displayed in the current window. (default nil)
    dotspacemacs-switch-to-buffer-prefers-purpose nil
-
-   ;; Whether side windows (such as those created by treemacs or neotree)
-   ;; are kept or minimized by `spacemacs/toggle-maximize-window' (SPC w m).
-   ;; (default t)
-   dotspacemacs-maximize-window-keep-side-windows t
-
-   ;; If nil, no load-hints enabled. If t, enable the `load-hints' which will
-   ;; put the most likely path on the top of `load-path' to reduce walking
-   ;; through the whole `load-path'. It's an experimental feature to speedup
-   ;; Spacemacs on Windows. Refer the FAQ.org "load-hints" session for details.
-   dotspacemacs-enable-load-hints nil
-
-   ;; If t, enable the `package-quickstart' feature to avoid full package
-   ;; loading, otherwise no `package-quickstart' attemption (default nil).
-   ;; Refer the FAQ.org "package-quickstart" section for details.
-   dotspacemacs-enable-package-quickstart nil
 
    ;; If non-nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
@@ -457,7 +444,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Code folding method. Possible values are `evil', `origami' and `vimish'.
    ;; (default 'evil)
-   dotspacemacs-folding-method 'evil
+   dotspacemacs-folding-method 'origami
 
    ;; If non-nil and `dotspacemacs-activate-smartparens-mode' is also non-nil,
    ;; `smartparens-strict-mode' will be enabled in programming modes.
@@ -498,13 +485,6 @@ It should only modify the values of Spacemacs settings."
    ;; (default '("rg" "ag" "pt" "ack" "grep"))
    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
 
-   ;; The backend used for undo/redo functionality. Possible values are
-   ;; `undo-fu', `undo-redo' and `undo-tree' see also `evil-undo-system'.
-   ;; Note that saved undo history does not get transferred when changing
-   ;; your undo system. The default is currently `undo-fu' as `undo-tree'
-   ;; is not maintained anymore and `undo-redo' is very basic."
-   dotspacemacs-undo-system 'undo-fu
-
    ;; Format specification for setting the frame title.
    ;; %a - the `abbreviated-file-name', or `buffer-name'
    ;; %t - `projectile-project-name'
@@ -540,9 +520,6 @@ It should only modify the values of Spacemacs settings."
    ;; to aggressively delete empty line and long sequences of whitespace,
    ;; `trailing' to delete only the whitespace at end of lines, `changed' to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
-   ;; The variable `global-spacemacs-whitespace-cleanup-modes' controls
-   ;; which major modes have whitespace cleanup enabled or disabled
-   ;; by default.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup nil
 
@@ -594,6 +571,27 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+
+  ;; (setq configuration-layer-elpa-archives
+  ;;       '(("melpa-cn" . "http://mirrors.163.com/elpa/melpa/")
+  ;;         ("org-cn"   . "http://mirrors.163.com/elpa/org/")
+  ;;         ("gnu-cn"   . "http://mirrors.163.com/elpa/gnu/")))
+  ;; (setq quelpa-update-melpa-p nil) ; Disable MELPA updates for Quelpa
+  ;; (unless (package-installed-p 'quelpa)
+  ;;   (with-temp-buffer
+  ;;     (url-insert-file-contents
+  ;;      "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
+  ;;     (eval-buffer)
+  ;;     (quelpa-self-upgrade)))
+  ;; (quelpa
+  ;;  '(quelpa-use-package
+  ;;    :fetcher git
+  ;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
+  ;; (require 'quelpa-use-package)
+  ;; (use-package quelpa
+  ;;   :ensure t)
+  ;; (use-package quelpa-use-package
+  ;;   :ensure t)
   )
 
 
@@ -611,6 +609,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+
   )
 
 
@@ -626,53 +625,25 @@ This function is called at the very end of Spacemacs initialization."
    ;; If you edit it by hand, you could mess it up, so be careful.
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
+   '(org-refile-targets '((g4z3-org-refile-targets :maxlevel . 1)))
    '(package-selected-packages
-     '(ace-jump-helm-line ace-link ag aggressive-indent all-the-icons auto-compile
-                          auto-highlight-symbol auto-yasnippet
-                          centered-cursor-mode clean-aindent-mode cmake-mode
-                          code-cells code-review column-enforce-mode
-                          company-c-headers company-web conda cpp-auto-include
-                          crux cython-mode dap-mode define-word devdocs diminish
-                          dired-quick-sort disable-mouse disaster dotenv-mode
-                          drag-stuff dumb-jump elisp-def elisp-demos
-                          elisp-slime-nav emmet-mode emr eval-sexp-fu evil-anzu
-                          evil-args evil-cleverparens evil-collection evil-escape
-                          evil-evilified-state evil-exchange evil-goggles
-                          evil-iedit-state evil-indent-plus evil-lion
-                          evil-lisp-state evil-matchit evil-mc evil-nerd-commenter
-                          evil-numbers evil-surround evil-textobj-line evil-tutor
-                          evil-unimpaired evil-visual-mark-mode evil-visualstar
-                          expand-region eyebrowse fancy-battery flx-ido gendoxy
-                          git-auto-commit-mode git-link git-messenger git-modes
-                          git-timemachine gitignore-templates golden-ratio
-                          google-c-style google-translate hackernews helm-ag
-                          helm-c-yasnippet helm-comint helm-company helm-css-scss
-                          helm-ctest helm-descbinds helm-git-grep helm-ls-git
-                          helm-lsp helm-make helm-mode-manager helm-org
-                          helm-projectile helm-purpose helm-pydoc helm-swoop
-                          helm-themes helm-xref hide-comnt highlight-indentation
-                          highlight-numbers highlight-parentheses hl-todo
-                          holy-mode hungry-delete hybrid-mode impatient-mode
-                          indent-guide info+ inspector journalctl-mode js-doc
-                          js2-refactor json-mode json-navigator json-reformat
-                          link-hint live-py-mode livid-mode lorem-ipsum
-                          lsp-origami lsp-ui macrostep move-text multi-line
-                          nameless nodejs-repl npm-mode open-junk-file org-mime
-                          org-superstar overseer paradox password-generator
-                          pcre2el pip-requirements pipenv pippel poetry popwin
-                          prettier-js pug-mode py-isort pydoc pyenv-mode pyim
-                          pylookup pytest quelpa quickrun rainbow-delimiters
-                          request restart-emacs ron-mode rustic sass-mode
-                          scss-mode slim-mode smeargle space-doc spaceline
-                          spacemacs-purpose-popwin spacemacs-whitespace-cleanup
-                          sphinx-doc sqlite3 string-edit-at-point
-                          string-inflection symbol-overlay symon systemd tagedit
-                          term-cursor toc-org toml-mode treemacs-icons-dired
-                          treemacs-magit treemacs-persp treemacs-projectile
-                          undo-fu undo-fu-session vi-tilde-fringe vim-powerline
-                          volatile-highlights vundo web-beautify web-mode wgrep
-                          winum writeroom-mode ws-butler yaml-mode
-                          yasnippet-snippets)))
+     '(tramp conda company-web web-completion-data counsel-css emmet-mode helm-css-scss pug-mode sass-mode haml-mode scss-mode slim-mode tagedit web-mode ron-mode rustic xterm-color rust-mode xref toml-mode ag add-node-modules-path impatient-mode htmlize import-js grizzl js-doc js2-refactor multiple-cursors livid-mode nodejs-repl npm-mode prettier-js skewer-mode js2-mode simple-httpd tern web-beautify systemd journalctl-mode yaml-mode copilot blacken code-cells company-anaconda anaconda-mode company counsel-gtags counsel swiper ivy cython-mode dap-mode lsp-docker lsp-treemacs bui yaml ggtags helm-cscope helm-pydoc importmagic epc ctable concurrent deferred live-py-mode lsp-pyright lsp-python-ms lsp-mode markdown-mode nose pip-requirements pipenv load-env-vars pippel poetry transient seq py-isort pydoc pyenv-mode pythonic pylookup pytest pyvenv sphinx-doc stickyfunc-enhance xcscope yapfify ws-butler writeroom-mode winum which-key volatile-highlights vim-powerline vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired toc-org term-cursor symon symbol-overlay string-inflection string-edit-at-point spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc restart-emacs request rainbow-delimiters quickrun popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless multi-line macrostep lorem-ipsum link-hint inspector info+ indent-guide hybrid-mode hungry-delete holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-descbinds helm-comint helm-ag google-translate golden-ratio flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region eval-sexp-fu emr elisp-slime-nav elisp-def editorconfig dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile all-the-icons aggressive-indent ace-link ace-jump-helm-line))
+   '(paradox-github-token t)
+   '(safe-local-variable-values
+     '((eval progn
+             (setenv "VIRTUALENV" "/home/ph/.virtualenvs/a7a311")
+             (setenv "PATH" "/home/ph/.local/bin:/home/ph/.virtualenvs/a7a311/bin:/opt/pyenv/local/bin:/opt/pyenv/local/sbin:/usr/local/cuda/bin:/home/ph/.local/bin:/home/ph/.nvm/versions/node/v20.11.1/bin:/opt/pyenv/local/bin:/opt/pyenv/local/sbin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/ph/.local/bin:/home/ph/.local/bin"))
+       (gac-automatically-push-p t)
+       (gac-automatically-add-new-files-p t)
+       (javascript-backend . tide)
+       (javascript-backend . tern)
+       (javascript-backend . lsp)))
+   '(send-mail-function 'smtpmail-send-it)
+   '(smtpmail-smtp-server "smtp.feishu.cn")
+   '(smtpmail-smtp-service 25)
+   '(warning-suppress-types
+     '(((copilot copilot-no-mode-indent))
+       ((copilot copilot-no-mode-indent)))))
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.
