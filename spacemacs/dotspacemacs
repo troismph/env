@@ -62,11 +62,11 @@ This function should only modify configuration layer settings."
      ;; version-control
      spacemacs-project
      treemacs
-     ;; dap
+     dap
      hackernews
      (conda :variables conda-anaconda-home "/opt/pyenv/mambaforge" conda-env-home-directory "/opt/pyenv/mambaforge")
-     (c-c++ :variables c-c++-backend 'lsp-clangd)
-     (cmake :variables cmake-backend 'lsp)
+     (c-c++ :variables c-c++-backend 'eglot)
+     (cmake :variables cmake-backend 'eglot)
      g4z3
      ;; themes-megapack
      )
