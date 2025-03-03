@@ -23,6 +23,12 @@
       "-o ControlMaster=auto -o ControlPath='~/.ssh/sockets/tramp-%%r@%%h:%%p' -o ControlPersist=3600")
 
 (add-hook 'python-mode-hook 'eglot-ensure)
+;; ensure that elot defaults to pyright for python-mode
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(python-mode . ("pyright-langserver" "--stdio"))
+               nil)  ; `nil` ensures prepending instead of appending
+  )
 
 ;; (with-eval-after-load 'lsp-mode
 ;;   (setq lsp-enabled-clients '(pylsp-tramp pylsp))
