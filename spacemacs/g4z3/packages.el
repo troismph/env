@@ -52,6 +52,7 @@
     sqlite3
     ag
     org-mime
+    ;; undo-tree
     )
   "The list of Lisp packages required by the g4z3 layer.
 
@@ -148,3 +149,7 @@ Each entry is either:
 (defun g4z3/init-org-mime ()
   (use-package org-mime)
   )
+
+;; (defun g4z3/init-undo-tree ()
+;;   (use-package undo-tree)
+;;   )
