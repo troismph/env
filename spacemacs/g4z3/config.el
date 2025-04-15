@@ -58,7 +58,7 @@
 
 ;; org config
 (require 'org)
-(setq org-directory "~/Documents/org")
+(setq org-directory "~/Documents/notes")
 (setq org-log-into-drawer t)
 (setq org-hide-drawer-startup t)
 (defun capture-report-date-file (path)
@@ -118,7 +118,7 @@
 
 ;; (my/org-add-linked-files-to-agenda "~/Documents/notes/tracker.org")
 
-(setq org-agenda-files "~/Documents/org/agenda_files")
+(setq org-agenda-files "~/Documents/notes/agenda_files")
 
 (defun org-agenda-contemplations()
   (interactive)
