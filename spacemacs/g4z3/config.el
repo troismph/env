@@ -30,6 +30,9 @@
                nil)  ; `nil` ensures prepending instead of appending
   )
 
+(add-hook 'c++-mode-hook 'eglot-ensure)
+(add-hook 'c++-mode-hook 'google-set-c-style)
+
 ;; (with-eval-after-load 'lsp-mode
 ;;   (setq lsp-enabled-clients '(pylsp-tramp pylsp))
 ;;   (setq lsp-client-packages '(pylsp-tramp pylsp))
