@@ -61,7 +61,7 @@
 
 [user]
 	name = PH
-	email = hanpeng@probquant.com
+	email = ph@alphaith.com
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
@@ -71,7 +71,7 @@
 	program = gpg
 [includeIf "gitdir:~/src/pqi/"]
   path = ~/src/pqi/.gitconfig
-    
+
 ; [http]
 ; 	proxy = http://localhost:11081
 ; [https]
