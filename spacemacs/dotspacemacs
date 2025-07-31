@@ -626,6 +626,9 @@ This function is called at the very end of Spacemacs initialization."
    ;; If you edit it by hand, you could mess it up, so be careful.
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
+   '(org-todo-keywords
+     '((sequence "QUESTION(q@/!)" "TODO(t@/!)" "PROGRESS(p@/!)" "BLOCKED(b@/!)" "|"
+                 "DONE(d@/!)" "CANCELED(c@/!)")))
    '(package-selected-packages
      '(ace-jump-helm-line ace-link ag aggressive-indent all-the-icons auto-compile
                           auto-highlight-symbol auto-yasnippet
