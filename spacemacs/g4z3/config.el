@@ -195,7 +195,8 @@
 
 ;; dap mode configs, remove 'breakpoints' for better performance over trampa
 ;; (setq dap-auto-configure-features '(locals))
-(setq dap-auto-configure-features '(sessions locals controls tooltip))
+;; (setq dap-auto-configure-features '(sessions locals controls tooltip))
+;; (setq dap-auto-configure-features '(sessions locals breakpoints expressions controls tooltip))
 
 (with-eval-after-load 'dap-hydra
   (defhydra+ dap-hydra (:color pink :hint nil :foreign-keys run)

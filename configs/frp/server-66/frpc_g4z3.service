@@ -1,0 +1,12 @@
+[Unit]
+Description=frpc client to g4z3-home service
+After=network.target
+
+[Service]
+Type=simple
+User=ph
+ExecStart=/home/ph/frp/frpc -c /home/ph/frp/frpc.toml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
