@@ -32,7 +32,9 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(html
+   '(csv
+     ;; csv
+     html
      rust
      javascript
      systemd
@@ -67,6 +69,7 @@ This function should only modify configuration layer settings."
      (conda :variables conda-anaconda-home "/opt/pyenv/mambaforge" conda-env-home-directory "/opt/pyenv/mambaforge")
      (c-c++ :variables c-c++-backend 'eglot)
      (cmake :variables cmake-backend 'eglot)
+     ;; bm  ;; the bookmark layer
      g4z3
      ;; themes-megapack
      )
@@ -80,7 +83,9 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
-   '()
+   '(
+     ;; treesit-fold
+     )
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -496,7 +501,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
    ;; (default '("rg" "ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
+   dotspacemacs-search-tools '("rg" "ag" "ack" "grep")
 
    ;; The backend used for undo/redo functionality. Possible values are
    ;; `undo-fu', `undo-redo' and `undo-tree' see also `evil-undo-system'.
@@ -594,6 +599,10 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (setq configuration-layer-elpa-archives
+        '(("melpa-cn" . "https://mirrors.sjtug.sjtu.edu.cn/emacs-elpa/melpa/")
+          ("org-cn"   . "https://mirrors.sjtug.sjtu.edu.cn/emacs-elpa/org/")
+          ("gnu-cn"   . "https://mirrors.sjtug.sjtu.edu.cn/emacs-elpa/gnu/")))
   )
 
 
@@ -626,15 +635,16 @@ This function is called at the very end of Spacemacs initialization."
    ;; If you edit it by hand, you could mess it up, so be careful.
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
+   '(js-indent-level 2)
    '(package-selected-packages
-     '(ace-jump-helm-line ace-link ag aggressive-indent all-the-icons auto-compile
-                          auto-highlight-symbol auto-yasnippet
+     '(ace-jump-helm-line ace-link ag aggressive-indent all-the-icons auctex
+                          auto-compile auto-highlight-symbol auto-yasnippet
                           centered-cursor-mode clean-aindent-mode cmake-mode
                           code-cells code-review column-enforce-mode
-                          company-c-headers company-web conda cpp-auto-include
-                          crux cython-mode dap-mode define-word devdocs diminish
-                          dired-quick-sort disable-mouse disaster dotenv-mode
-                          drag-stuff dumb-jump elisp-def elisp-demos
+                          company-c-headers company-web conda consult
+                          cpp-auto-include crux cython-mode dap-mode define-word
+                          devdocs diminish dired-quick-sort disable-mouse disaster
+                          dotenv-mode drag-stuff dumb-jump elisp-def elisp-demos
                           elisp-slime-nav emmet-mode emr eval-sexp-fu evil-anzu
                           evil-args evil-cleverparens evil-collection evil-escape
                           evil-evilified-state evil-exchange evil-goggles
@@ -655,23 +665,24 @@ This function is called at the very end of Spacemacs initialization."
                           holy-mode hungry-delete hybrid-mode impatient-mode
                           indent-guide info+ inspector journalctl-mode js-doc
                           js2-refactor json-mode json-navigator json-reformat
-                          link-hint live-py-mode livid-mode lorem-ipsum
-                          lsp-origami lsp-ui macrostep move-text multi-line
-                          nameless nodejs-repl npm-mode open-junk-file org-mime
-                          org-superstar overseer paradox password-generator
-                          pcre2el pip-requirements pipenv pippel poetry popwin
-                          prettier-js pug-mode py-isort pydoc pyenv-mode pyim
-                          pylookup pytest quelpa quickrun rainbow-delimiters
-                          request restart-emacs ron-mode rustic sass-mode
-                          scss-mode slim-mode smeargle space-doc spaceline
-                          spacemacs-purpose-popwin spacemacs-whitespace-cleanup
-                          sphinx-doc sqlite3 string-edit-at-point
-                          string-inflection symbol-overlay symon systemd tagedit
-                          term-cursor toc-org toml-mode treemacs-icons-dired
+                          latex-preview-pane link-hint live-py-mode livid-mode
+                          lorem-ipsum lsp-origami lsp-ui macrostep move-text
+                          multi-line nameless nodejs-repl npm-mode open-junk-file
+                          org-mime org-superstar overseer paradox
+                          password-generator pcre2el pip-requirements pipenv
+                          pippel poetry popwin prettier-js pug-mode py-isort pydoc
+                          pyenv-mode pyim pylookup pytest quelpa quickrun
+                          rainbow-delimiters request restart-emacs ron-mode rustic
+                          sass-mode scss-mode slim-mode smeargle space-doc
+                          spaceline spacemacs-purpose-popwin
+                          spacemacs-whitespace-cleanup sphinx-doc sqlite3
+                          string-edit-at-point string-inflection symbol-overlay
+                          symon systemd tagedit term-cursor texfrag toc-org
+                          toml-mode tree-sitter treemacs-icons-dired
                           treemacs-magit treemacs-persp treemacs-projectile
-                          undo-fu undo-fu-session vi-tilde-fringe vim-powerline
-                          volatile-highlights vundo web-beautify web-mode wgrep
-                          winum writeroom-mode ws-butler yaml-mode
+                          treesit-fold undo-fu undo-fu-session vi-tilde-fringe
+                          vim-powerline volatile-highlights vundo web-beautify
+                          web-mode wgrep winum writeroom-mode ws-butler yaml-mode
                           yasnippet-snippets)))
   (custom-set-faces
    ;; custom-set-faces was added by Custom.

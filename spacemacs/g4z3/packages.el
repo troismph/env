@@ -52,6 +52,8 @@
     sqlite3
     ag
     org-mime
+    texfrag
+    ;; treesit-fold
     ;; undo-tree
     )
   "The list of Lisp packages required by the g4z3 layer.
@@ -150,6 +152,17 @@ Each entry is either:
   (use-package org-mime)
   )
 
+(defun g4z3/init-texfrag ()
+  ;; the following line setting variable is required
+  ;; to fix a bug in auctex
+  (setq TeX-active-tempdir "/tmp/texfrag")
+  (use-package texfrag)
+  )
+
 ;; (defun g4z3/init-undo-tree ()
 ;;   (use-package undo-tree)
+;;   )
+
+;; (defun g4z3/init-treesit-fold ()
+;;   (use-package treesit-fold)
 ;;   )

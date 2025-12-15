@@ -30,6 +30,20 @@
                nil)  ; `nil` ensures prepending instead of appending
   )
 
+(defun dap-debug-current-pytest ()
+  "Debug the pytest test at point (auto-detected)."
+  (interactive)
+  (let ((test-name (python-info-current-defun))
+        (file (buffer-file-name)))
+    (message "Debugging pytest test: %s::%s" file test-name)
+    (if (and test-name file)
+        (dap-debug (list :type "python"
+                         :args `("-v" "--capture=no" ,(format "%s::%s" file test-name))
+                         :module "pytest"
+                         :request "launch"
+                         :name (format "Pytest: %s" test-name)))
+      (error "Not inside a pytest test function!"))))
+
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'google-set-c-style)
 
@@ -181,7 +195,8 @@
 
 ;; dap mode configs, remove 'breakpoints' for better performance over trampa
 ;; (setq dap-auto-configure-features '(locals))
-(setq dap-auto-configure-features '(sessions locals controls tooltip))
+;; (setq dap-auto-configure-features '(sessions locals controls tooltip))
+;; (setq dap-auto-configure-features '(sessions locals breakpoints expressions controls tooltip))
 
 (with-eval-after-load 'dap-hydra
   (defhydra+ dap-hydra (:color pink :hint nil :foreign-keys run)

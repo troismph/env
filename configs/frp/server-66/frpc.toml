@@ -1,0 +1,28 @@
+# frpc.toml
+serverAddr = "tread.miniogre.com"
+serverPort = 65521
+auth.method = "token"
+auth.token = "Fs5f8CY6us4K7n9i"
+loginFailExit = false
+
+[[proxies]]
+name = "ssh_66"
+type = "xtcp"
+secretKey = "CEW5pWsycjutpd9Y"
+localIP = "127.0.0.1"
+localPort = 22
+
+[[proxies]]
+name = "ssh_66_stcp"
+type = "stcp"
+secretKey = "CEW5pWsycjutpd9Y"
+localIP = "127.0.0.1"
+localPort = 22
+
+[[proxies]]
+name = "plugin_socks5"
+type = "stcp"
+# remotePort = 50066
+secretKey = "CEW5pWsycjutpd9Y"
+[proxies.plugin]
+type = "socks5"
