@@ -51,8 +51,14 @@
     crux
     sqlite3
     ag
+    <<<<<<< HEAD
     org-mime
     chatu
+    =======
+    ;; org-mime
+    texfrag
+    ;; treesit-fold
+    >>>>>>> aa11d57ab3f85ea176b8170558be2653cb443f8e
     ;; undo-tree
     )
   "The list of Lisp packages required by the g4z3 layer.
@@ -120,7 +126,27 @@ Each entry is either:
   )
 
 (defun g4z3/init-copilot ()
-  (use-package copilot)
+  (use-package copilot
+    :config
+    (with-eval-after-load 'company
+      ;; disable inline previews
+      (delq 'company-preview-if-just-one-frontend company-frontends))
+    (with-eval-after-load 'copilot
+      (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+      (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+      (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
+      (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
+    ;; default copilot-enable-predicates includes evil-insert-state-p which does not work when i am not in evil mode
+    ;; so i disable it and only enable copilot--buffer-changed
+    ;; copilot needs proxy on server idc-server66, so set proxy by host name
+    (defun hostname-based-config ()
+      (cond ((string= (system-name) "idc-server66") (setq copilot-network-proxy '(:host "10.10.10.101" :port 7890))))
+      )
+    (hostname-based-config)
+    (setq copilot-enable-predicates '(copilot--buffer-changed))
+    (setq copilot-idle-delay 1)
+    (add-hook 'prog-mode-hook 'copilot-mode)
+    )
   )
 
 (defun g4z3/init-copilot-chat ()
@@ -147,8 +173,15 @@ Each entry is either:
   (use-package ag)
   )
 
-(defun g4z3/init-org-mime ()
-  (use-package org-mime)
+;; (defun g4z3/init-org-mime ()
+;;   (use-package org-mime)
+;;   )
+
+(defun g4z3/init-texfrag ()
+  ;; the following line setting variable is required
+  ;; to fix a bug in auctex
+  (setq TeX-active-tempdir "/tmp/texfrag")
+  (use-package texfrag)
   )
 
 ;; (defun g4z3/init-undo-tree ()
