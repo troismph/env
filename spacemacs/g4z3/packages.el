@@ -52,6 +52,7 @@
     sqlite3
     ag
     org-mime
+    chatu
     ;; undo-tree
     )
   "The list of Lisp packages required by the g4z3 layer.
@@ -153,3 +154,13 @@ Each entry is either:
 ;; (defun g4z3/init-undo-tree ()
 ;;   (use-package undo-tree)
 ;;   )
+
+(defun g4z3/init-chatu ()
+  (use-package chatu
+    :hook ((org-mode markdown-mode) . chatu-mode)
+    :commands (chatu-add
+               chatu-open)
+    :custom ((chatu-input-dir "./draws")
+             (chatu-output-dir "./draws_out"))
+    )
+  )

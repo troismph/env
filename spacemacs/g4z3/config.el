@@ -134,6 +134,8 @@
 
 (setq org-agenda-files "~/Documents/notes/agenda_files")
 
+(setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
+
 (defun org-agenda-contemplations()
   (interactive)
   (org-tags-view nil "+DEADLINE=\"\"+SCHEDULED=\"\"/!")
@@ -220,7 +222,7 @@
 ;; (hostname-based-config)
 (setq copilot-enable-predicates '(copilot--buffer-changed))
 (setq copilot-idle-delay 1)
-(add-hook 'prog-mode-hook 'copilot-mode)
+;; (add-hook 'prog-mode-hook 'copilot-mode)
 
 ;; custom functions
 (defun my-print-lsp-workspace-root ()
