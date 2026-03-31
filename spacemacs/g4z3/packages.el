@@ -51,14 +51,10 @@
     crux
     sqlite3
     ag
-    <<<<<<< HEAD
     org-mime
-    chatu
-    =======
-    ;; org-mime
     texfrag
+    chatu
     ;; treesit-fold
-    >>>>>>> aa11d57ab3f85ea176b8170558be2653cb443f8e
     ;; undo-tree
     )
   "The list of Lisp packages required by the g4z3 layer.
@@ -173,9 +169,9 @@ Each entry is either:
   (use-package ag)
   )
 
-;; (defun g4z3/init-org-mime ()
-;;   (use-package org-mime)
-;;   )
+(defun g4z3/init-org-mime ()
+  (use-package org-mime)
+  )
 
 (defun g4z3/init-texfrag ()
   ;; the following line setting variable is required
