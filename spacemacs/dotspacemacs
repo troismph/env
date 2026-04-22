@@ -642,29 +642,30 @@ This function is called at the very end of Spacemacs initialization."
        "8874e55e1201a8caead1cf3bd59a5f81af098f73ba3bb3cdb09e7cbe9ccb0cc7"
        "01f347a923dd21661412d4c5a7c7655bf17fb311b57ddbdbd6fce87bd7e58de6"
        "3965b6ca0a05de9cca25e9d4b20518f2e1d06ccba6a7debda919aff8f7bc90b9" default))
+   '(js-indent-level 2)
+   '(org-directory "~/Documents/notes")
    '(org-todo-keywords
      '((sequence "QUESTION(q@/!)" "TODO(t@/!)" "PROGRESS(p@/!)" "BLOCKED(b@/!)" "|"
                  "DONE(d@/!)" "CANCELED(c@/!)")))
-   '(js-indent-level 2)
-   '(org-directory "~/Documents/notes")
    '(package-selected-packages
      '(ace-jump-helm-line ace-link aggressive-indent all-the-icons auctex
                           auto-compile auto-highlight-symbol auto-yasnippet
                           centered-cursor-mode clean-aindent-mode cmake-mode
                           code-cells code-review column-enforce-mode
-                          company-c-headers company-web conda consult copilot copilot-chat
-                          cpp-auto-include crux cython-mode dap-mode define-word
-                          devdocs diminish dired-quick-sort disable-mouse disaster
-                          dotenv-mode drag-stuff dumb-jump elisp-def elisp-demos
-                          elisp-slime-nav emmet-mode emr eval-sexp-fu evil-anzu
-                          evil-args evil-cleverparens evil-collection evil-escape
-                          evil-evilified-state evil-exchange evil-goggles
-                          evil-iedit-state evil-indent-plus evil-lion
-                          evil-lisp-state evil-matchit evil-mc evil-nerd-commenter
-                          evil-numbers evil-surround evil-textobj-line evil-tutor
-                          evil-unimpaired evil-visual-mark-mode evil-visualstar
-                          expand-region eyebrowse fancy-battery flx-ido gendoxy
-                          git-link git-messenger git-modes git-timemachine
+                          company-c-headers company-web conda consult copilot
+                          copilot-chat cpp-auto-include crux cython-mode dap-mode
+                          define-word devdocs diminish dired-quick-sort
+                          disable-mouse disaster dotenv-mode drag-stuff dumb-jump
+                          elisp-def elisp-demos elisp-slime-nav emmet-mode emr
+                          eval-sexp-fu evil-anzu evil-args evil-cleverparens
+                          evil-collection evil-escape evil-evilified-state
+                          evil-exchange evil-goggles evil-iedit-state
+                          evil-indent-plus evil-lion evil-lisp-state evil-matchit
+                          evil-mc evil-nerd-commenter evil-numbers evil-surround
+                          evil-textobj-line evil-tutor evil-unimpaired
+                          evil-visual-mark-mode evil-visualstar expand-region
+                          eyebrowse fancy-battery flx-ido gendoxy git-link
+                          git-messenger git-modes git-timemachine
                           gitignore-templates golden-ratio google-c-style
                           google-translate hackernews helm-ag helm-c-yasnippet
                           helm-comint helm-company helm-css-scss helm-ctest
@@ -677,13 +678,14 @@ This function is called at the very end of Spacemacs initialization."
                           json-mode json-navigator json-reformat
                           latex-preview-pane link-hint live-py-mode livid-mode
                           lorem-ipsum lsp-origami lsp-ui macrostep multi-line
-                          nameless nodejs-repl npm-mode open-junk-file org-mime
-                          overseer paradox password-generator pcre2el
-                          pip-requirements pipenv pippel poetry popwin prettier-js
-                          pug-mode py-isort pydoc pyenv-mode pylookup pytest
-                          quelpa quickrun rainbow-delimiters request restart-emacs
-                          ron-mode rustic sass-mode scss-mode slim-mode smeargle
-                          space-doc spaceline spacemacs-purpose-popwin
+                          nameless nodejs-repl npm-mode open-junk-file
+                          org-download org-mime overseer paradox
+                          password-generator pcre2el pip-requirements pipenv
+                          pippel poetry popwin prettier-js pug-mode py-isort pydoc
+                          pyenv-mode pylookup pytest quelpa quickrun
+                          rainbow-delimiters request restart-emacs ron-mode rustic
+                          sass-mode scss-mode slim-mode smeargle space-doc
+                          spaceline spacemacs-purpose-popwin
                           spacemacs-whitespace-cleanup sphinx-doc
                           string-edit-at-point string-inflection symbol-overlay
                           symon systemd tagedit term-cursor toc-org toml-mode
