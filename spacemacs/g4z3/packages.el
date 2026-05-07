@@ -51,8 +51,10 @@
     crux
     sqlite3
     ag
-    ;; org-mime
+    org-mime
     texfrag
+    chatu
+    org-download
     ;; treesit-fold
     ;; undo-tree
     gptel
@@ -171,9 +173,9 @@ Each entry is either:
   (use-package ag)
   )
 
-;; (defun g4z3/init-org-mime ()
-;;   (use-package org-mime)
-;;   )
+(defun g4z3/init-org-mime ()
+  (use-package org-mime)
+  )
 
 (defun g4z3/init-texfrag ()
   ;; the following line setting variable is required
@@ -211,5 +213,18 @@ Each entry is either:
     ;; Below are the default values
     (elysium-window-size 0.2) ; The elysium buffer will be 1/3 your screen
     (elysium-window-style 'vertical)) ; Can be customized to horizontal
+  )
 
+(defun g4z3/init-chatu ()
+  (use-package chatu
+    :hook ((org-mode markdown-mode) . chatu-mode)
+    :commands (chatu-add
+               chatu-open)
+    :custom ((chatu-input-dir "./draws")
+             (chatu-output-dir "./draws_out"))
+    )
+  )
+
+(defun g4z3/init-org-download ()
+  (use-package org-download)
   )

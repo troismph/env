@@ -107,6 +107,27 @@
 
   ;; (my/org-add-linked-files-to-agenda "~/Documents/notes/tracker.org")
 
+  (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
+
+  (defun org-agenda-contemplations()
+    (interactive)
+    (org-tags-view nil "+DEADLINE=\"\"+SCHEDULED=\"\"/!")
+    )
+  (defun org-agenda-now()
+    (interactive)
+    (org-agenda-list)
+    )
+  (setq org-agenda-prefix-format
+        '((agenda . " %i %-12:c%?-12t% s%b") ;; Include breadcrumbs in the agenda view
+          (todo   . " %i %-12:c %b")          ;; Include breadcrumbs in the todo view
+          (tags   . " %i %-12:c %b")
+          (search . " %i %-12:c %b")))
+  (setq org-src-window-setup (quote other-window))
+  (setq g4z3-org-refile-exclude '("journal.org"))
+  (setq g4z3-org-refile-exclude-regex "journal")
+  (defun g4z3-org-refile-filter(s)
+    (and (string-match "^[^#]*\.org$" s) (not (string-match g4z3-org-refile-exclude-regex s)))
+    )
   (setq org-agenda-files "~/Documents/notes/agenda_files")
 
   (defun org-agenda-contemplations()
@@ -160,7 +181,8 @@
     "Insert the current timestamp with seconds in Org mode."
     (interactive)
     (let ((current-time (format-time-string "[%Y-%m-%d %a %H:%M:%S]")))
-      (insert current-time)))
+      (insert current-time))
+    )
   )
 
 ;; auto remove trailing whitespaces on saving
@@ -174,6 +196,27 @@
 (with-eval-after-load 'dap-hydra
   (defhydra+ dap-hydra (:color pink :hint nil :foreign-keys run)
     ("sr" dap-ui-repl "repl" :exit (dap-hydra/nil))))
+
+;; copilot settings
+(with-eval-after-load 'company
+  ;; disable inline previews
+  (delq 'company-preview-if-just-one-frontend company-frontends))
+(with-eval-after-load 'copilot
+  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
+  (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
+;; default copilot-enable-predicates includes evil-insert-state-p which does not work when i am not in evil mode
+;; so i disable it and only enable copilot--buffer-changed
+
+;; copilot needs proxy on server idc-server66, so set proxy by host name
+;; (defun hostname-based-config ()
+;;   (cond ((string= (system-name) "idc-server66") (setq copilot-network-proxy '(:host "127.0.0.1" :port 17890))))
+;;   )
+;; (hostname-based-config)
+(setq copilot-enable-predicates '(copilot--buffer-changed))
+(setq copilot-idle-delay 1)
+;; (add-hook 'prog-mode-hook 'copilot-mode)
 
 ;; custom functions
 (defun my-print-lsp-workspace-root ()
