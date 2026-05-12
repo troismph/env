@@ -54,6 +54,7 @@
     org-mime
     texfrag
     chatu
+    org-download
     ;; treesit-fold
     ;; undo-tree
     )
@@ -192,4 +193,8 @@ Each entry is either:
     :custom ((chatu-input-dir "./draws")
              (chatu-output-dir "./draws_out"))
     )
+  )
+
+(defun g4z3/init-org-download ()
+  (use-package org-download)
   )
