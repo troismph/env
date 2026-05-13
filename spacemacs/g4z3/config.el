@@ -16,6 +16,12 @@
   )
 
 (add-hook 'python-mode-hook 'eglot-ensure)
+;; (add-hook 'python-mode-hook
+;;           (lambda ()
+;;             (setq importmagic-python-interpreter
+;;                   (concat pyvenv-virtual-env "/bin/python"))))
+;; (add-hook 'python-mode-hook 'importmagic-mode)
+
 ;; ensure that elot defaults to pyright for python-mode
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
