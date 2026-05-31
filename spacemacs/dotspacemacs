@@ -39,7 +39,7 @@ This function should only modify configuration layer settings."
      javascript
      systemd
      yaml
-     (python :variables python-backend 'eglot)
+     (python :variables python-backend 'eglot python-sort-imports-on-save t)
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -643,6 +643,7 @@ This function is called at the very end of Spacemacs initialization."
        "01f347a923dd21661412d4c5a7c7655bf17fb311b57ddbdbd6fce87bd7e58de6"
        "3965b6ca0a05de9cca25e9d4b20518f2e1d06ccba6a7debda919aff8f7bc90b9" default))
    '(js-indent-level 2)
+   '(org-babel-load-languages '((C . t) (js . t) (emacs-lisp . t) (python . t)))
    '(org-directory "~/Documents/notes")
    '(org-todo-keywords
      '((sequence "QUESTION(q@/!)" "TODO(t@/!)" "PROGRESS(p@/!)" "BLOCKED(b@/!)" "|"
@@ -656,7 +657,7 @@ This function is called at the very end of Spacemacs initialization."
                           copilot-chat cpp-auto-include crux cython-mode dap-mode
                           define-word devdocs diminish dired-quick-sort
                           disable-mouse disaster dotenv-mode drag-stuff dumb-jump
-                          elisp-def elisp-demos elisp-slime-nav emmet-mode emr
+                          eglot elisp-def elisp-demos elisp-slime-nav emmet-mode emr
                           eval-sexp-fu evil-anzu evil-args evil-cleverparens
                           evil-collection evil-escape evil-evilified-state
                           evil-exchange evil-goggles evil-iedit-state
@@ -667,15 +668,15 @@ This function is called at the very end of Spacemacs initialization."
                           eyebrowse fancy-battery flx-ido gendoxy git-link
                           git-messenger git-modes git-timemachine
                           gitignore-templates golden-ratio google-c-style
-                          google-translate hackernews helm-ag helm-c-yasnippet
-                          helm-comint helm-company helm-css-scss helm-ctest
-                          helm-descbinds helm-ls-git helm-lsp helm-make
+                          google-translate gptel hackernews helm-ag
+                          helm-c-yasnippet helm-comint helm-company helm-css-scss
+                          helm-ctest helm-descbinds helm-ls-git helm-lsp helm-make
                           helm-mode-manager helm-org helm-projectile helm-purpose
                           helm-pydoc helm-xref hide-comnt highlight-indentation
                           highlight-numbers highlight-parentheses hl-todo
-                          holy-mode hungry-delete impatient-mode indent-guide
-                          info+ inspector journalctl-mode js-doc js2-refactor
-                          json-mode json-navigator json-reformat
+                          holy-mode hungry-delete impatient-mode importmagic
+                          indent-guide info+ inspector journalctl-mode js-doc
+                          js2-refactor json-mode json-navigator json-reformat
                           latex-preview-pane link-hint live-py-mode livid-mode
                           lorem-ipsum lsp-origami lsp-ui macrostep multi-line
                           nameless nodejs-repl npm-mode open-junk-file

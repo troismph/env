@@ -16,6 +16,12 @@
   )
 
 (add-hook 'python-mode-hook 'eglot-ensure)
+;; (add-hook 'python-mode-hook
+;;           (lambda ()
+;;             (setq importmagic-python-interpreter
+;;                   (concat pyvenv-virtual-env "/bin/python"))))
+;; (add-hook 'python-mode-hook 'importmagic-mode)
+
 ;; ensure that elot defaults to pyright for python-mode
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
@@ -77,37 +83,14 @@
   (setq org-outline-path-complete-in-steps nil)
   (setq org-lowest-priority 68)
   (setq org-startup-truncated nil)
-
-
-  ;; dynamic agenda file list, extracted from tracker.org
-  ;; (defun my/org-extract-links (file)
-  ;;   "Extract all links from the specified Org FILE and return them as a list."
-  ;;   (with-current-buffer (find-file-noselect file)
-  ;;     (org-element-map (org-element-parse-buffer) 'link
-  ;;       (lambda (link)
-  ;;         (org-element-property :raw-link link)))))
-
-  ;; (defun my/org-add-linked-files-to-agenda (file)
-  ;;   "Extract links from the specified Org FILE, clear `org-agenda-files', and add the extracted file links (without the `file:` scheme) along with the root file."
-  ;;   (interactive "fSelect Org file: ")
-  ;;   (let* ((links (my/org-extract-links file))
-  ;;          (file-links (seq-filter (lambda (link)
-  ;;                                    (string-prefix-p "file:" link))
-  ;;                                  links))
-  ;;          (cleaned-links (mapcar (lambda (link)
-  ;;                                   (expand-file-name (substring link 5) (file-name-directory file)))
-  ;;                                 file-links))
-  ;;          (all-files (cons file cleaned-links)))
-  ;;     ;; Clear the org-agenda-files list
-  ;;     (setq org-agenda-files nil)
-  ;;     ;; Add the root file and the cleaned links to org-agenda-files
-  ;;     (setq org-agenda-files all-files)
-  ;;     (message "Cleared org-agenda-files and added the following files:\n%s"
-  ;;              (mapconcat #'identity all-files "\n"))))
-
-  ;; (my/org-add-linked-files-to-agenda "~/Documents/notes/tracker.org")
-
-  (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
+  (defun g4z3/org-refile-candidates ()
+    "Return a list of all .org files in ~/org and its subdirectories."
+    (directory-files-recursively "~/Documents/notes" "\\.org\\'"))
+  (setq org-refile-targets
+        '((org-agenda-files :maxlevel . 3)
+          (nil :maxlevel . 3)
+          (g4z3/org-refile-candidates :maxlevel . 3)))
+  ;; (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
 
   (defun org-agenda-contemplations()
     (interactive)

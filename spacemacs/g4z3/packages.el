@@ -57,6 +57,8 @@
     org-download
     ;; treesit-fold
     ;; undo-tree
+    gptel
+    elysium
     )
   "The list of Lisp packages required by the g4z3 layer.
 
@@ -143,6 +145,7 @@ Each entry is either:
     (setq copilot-enable-predicates '(copilot--buffer-changed))
     (setq copilot-idle-delay 1)
     (add-hook 'prog-mode-hook 'copilot-mode)
+    (add-hook 'prog-mode-hook #'copilot-nes-mode)
     )
   )
 
@@ -184,6 +187,33 @@ Each entry is either:
 ;; (defun g4z3/init-undo-tree ()
 ;;   (use-package undo-tree)
 ;;   )
+
+;; (defun g4z3/init-treesit-fold ()
+;;   (use-package treesit-fold)
+;;   )
+
+(defun g4z3/init-gptel ()
+  (use-package gptel
+    :config
+    (setq gptel-model   'deepseek-reasoner
+          gptel-backend (gptel-make-deepseek "DeepSeek"
+                          :stream t
+                          :key "sk-d4a394fdb2ee4b8cb93a02968e8c95b4"))
+    )
+  ;; (gptel-make-deepseek "DeepSeek"       ;Any name you want
+  ;;   :stream t                           ;for streaming responses
+  ;;   :key "sk-d4a394fdb2ee4b8cb93a02968e8c95b4")
+  ;; )
+  )
+
+
+(defun g4z3/init-elysium ()
+  (use-package elysium
+    :custom
+    ;; Below are the default values
+    (elysium-window-size 0.2) ; The elysium buffer will be 1/3 your screen
+    (elysium-window-style 'vertical)) ; Can be customized to horizontal
+  )
 
 (defun g4z3/init-chatu ()
   (use-package chatu
