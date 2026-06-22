@@ -44,8 +44,8 @@
   '(
     pyim
     pyim-basedict
-    copilot
-    copilot-chat
+    ;; copilot
+    ;; copilot-chat
     git-auto-commit-mode
     move-text
     crux
@@ -59,6 +59,8 @@
     ;; undo-tree
     gptel
     elysium
+    org-remark
+    org-special-block-extras
     )
   "The list of Lisp packages required by the g4z3 layer.
 
@@ -219,6 +221,7 @@ Each entry is either:
   (use-package chatu
     :hook ((org-mode markdown-mode) . chatu-mode)
     :commands (chatu-add
+
                chatu-open)
     :custom ((chatu-input-dir "./draws")
              (chatu-output-dir "./draws_out"))
@@ -227,4 +230,14 @@ Each entry is either:
 
 (defun g4z3/init-org-download ()
   (use-package org-download)
+  )
+
+(defun g4z3/init-org-remark ()
+  (use-package org-remark)
+  (add-hook 'org-mode-hook 'org-remark-mode)
+  )
+
+(defun g4z3/init-org-special-block-extras ()
+  (use-package org-special-block-extras)
+  (add-hook 'org-mode-hook 'org-special-block-extras-mode)
   )
