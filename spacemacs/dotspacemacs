@@ -635,7 +635,8 @@ This function is called at the very end of Spacemacs initialization."
    ;; If you edit it by hand, you could mess it up, so be careful.
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
-   ;; '(custom-enabled-themes '(spacemacs-light))
+   '(ai-code-onboarding-seen t)
+   '(custom-enabled-themes '(spacemacs-light))
    '(custom-safe-themes
      '("73434a894b58d29665b2b16fd1c2845883001a79e05ccb72318dfe4bdaf39191"
        "9af2b1c0728d278281d87dc91ead7f5d9f2287b1ed66ec8941e97ab7a6ab73c0"
@@ -657,8 +658,8 @@ This function is called at the very end of Spacemacs initialization."
                           copilot-chat cpp-auto-include crux cython-mode dap-mode
                           define-word devdocs diminish dired-quick-sort
                           disable-mouse disaster dotenv-mode drag-stuff dumb-jump
-                          eglot elisp-def elisp-demos elisp-slime-nav emmet-mode emr
-                          eval-sexp-fu evil-anzu evil-args evil-cleverparens
+                          eglot elisp-def elisp-demos elisp-slime-nav emmet-mode
+                          emr eval-sexp-fu evil-anzu evil-args evil-cleverparens
                           evil-collection evil-escape evil-evilified-state
                           evil-exchange evil-goggles evil-iedit-state
                           evil-indent-plus evil-lion evil-lisp-state evil-matchit
