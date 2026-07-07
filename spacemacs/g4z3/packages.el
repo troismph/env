@@ -62,6 +62,7 @@
     org-remark
     org-special-block-extras
     vterm  ;; required by ai-code
+    eat    ;; required by ai-code
     ai-code
     )
   "The list of Lisp packages required by the g4z3 layer.
@@ -246,6 +247,11 @@ Each entry is either:
 
 (defun g4z3/init-vterm ()
   (use-package vterm
+    :ensure t)
+  )
+
+(defun g4z3/init-eat ()
+  (use-package eat
     :ensure t)
   )
 
