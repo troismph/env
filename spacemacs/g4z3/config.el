@@ -273,3 +273,6 @@
 
 ;; host specific config
 (load (locate-user-emacs-file "~/.emacs.d/private/g4z3/local.el") t)
+
+;; imenu-list position control
+(setq imenu-list-position 'left)
