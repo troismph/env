@@ -61,6 +61,8 @@
     elysium
     org-remark
     org-special-block-extras
+    vterm  ;; required by ai-code
+    ai-code
     )
   "The list of Lisp packages required by the g4z3 layer.
 
@@ -240,4 +242,21 @@ Each entry is either:
 (defun g4z3/init-org-special-block-extras ()
   (use-package org-special-block-extras)
   (add-hook 'org-mode-hook 'org-special-block-extras-mode)
+  )
+
+(defun g4z3/init-vterm ()
+  (use-package vterm
+    :ensure t)
+  )
+
+(defun g4z3/init-ai-code ()
+  (use-package ai-code
+    :config
+    (ai-code-set-backend 'codex)
+    (global-set-key (kbd "C-c a") #'ai-code-menu)
+    (setq ai-code-auto-test-type 'ask-me)
+    (global-auto-revert-mode 1)
+    (with-eval-after-load 'magit
+      (ai-code-magit-setup-transients))
+    )
   )
