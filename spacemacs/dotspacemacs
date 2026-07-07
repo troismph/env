@@ -602,7 +602,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq configuration-layer-elpa-archives
         '(("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
           ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-          ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+          ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+          ("nongnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")))
   )
 
 
@@ -658,16 +659,16 @@ This function is called at the very end of Spacemacs initialization."
                           copilot-chat cpp-auto-include crux cython-mode dap-mode
                           define-word devdocs diminish dired-quick-sort
                           disable-mouse disaster dotenv-mode drag-stuff dumb-jump
-                          eglot elisp-def elisp-demos elisp-slime-nav emmet-mode
-                          emr eval-sexp-fu evil-anzu evil-args evil-cleverparens
-                          evil-collection evil-escape evil-evilified-state
-                          evil-exchange evil-goggles evil-iedit-state
-                          evil-indent-plus evil-lion evil-lisp-state evil-matchit
-                          evil-mc evil-nerd-commenter evil-numbers evil-surround
-                          evil-textobj-line evil-tutor evil-unimpaired
-                          evil-visual-mark-mode evil-visualstar expand-region
-                          eyebrowse fancy-battery flx-ido gendoxy git-link
-                          git-messenger git-modes git-timemachine
+                          eat eglot elisp-def elisp-demos elisp-slime-nav
+                          emmet-mode emr eval-sexp-fu evil-anzu evil-args
+                          evil-cleverparens evil-collection evil-escape
+                          evil-evilified-state evil-exchange evil-goggles
+                          evil-iedit-state evil-indent-plus evil-lion
+                          evil-lisp-state evil-matchit evil-mc evil-nerd-commenter
+                          evil-numbers evil-surround evil-textobj-line evil-tutor
+                          evil-unimpaired evil-visual-mark-mode evil-visualstar
+                          expand-region eyebrowse fancy-battery flx-ido gendoxy
+                          git-link git-messenger git-modes git-timemachine
                           gitignore-templates golden-ratio google-c-style
                           google-translate gptel hackernews helm-ag
                           helm-c-yasnippet helm-comint helm-company helm-css-scss
