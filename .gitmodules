@@ -1,0 +1,3 @@
+[submodule "spacemacs/g4z3/magit-difftastic"]
+	path = spacemacs/g4z3/magit-difftastic
+	url = git@github.com:rschmukler/magit-difftastic.git

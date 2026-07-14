@@ -657,7 +657,7 @@ This function is called at the very end of Spacemacs initialization."
                           code-cells code-review column-enforce-mode
                           company-c-headers company-web conda consult copilot
                           copilot-chat cpp-auto-include crux cython-mode dap-mode
-                          define-word devdocs diminish dired-quick-sort
+                          define-word devdocs difftastic diminish dired-quick-sort
                           disable-mouse disaster dotenv-mode drag-stuff dumb-jump
                           eat eglot elisp-def elisp-demos elisp-slime-nav
                           emmet-mode emr eval-sexp-fu evil-anzu evil-args
@@ -680,15 +680,15 @@ This function is called at the very end of Spacemacs initialization."
                           indent-guide info+ inspector journalctl-mode js-doc
                           js2-refactor json-mode json-navigator json-reformat
                           latex-preview-pane link-hint live-py-mode livid-mode
-                          lorem-ipsum lsp-origami lsp-ui macrostep multi-line
-                          nameless nodejs-repl npm-mode open-junk-file
-                          org-download org-mime overseer paradox
-                          password-generator pcre2el pip-requirements pipenv
-                          pippel poetry popwin prettier-js pug-mode py-isort pydoc
-                          pyenv-mode pylookup pytest quelpa quickrun
-                          rainbow-delimiters request restart-emacs ron-mode rustic
-                          sass-mode scss-mode slim-mode smeargle space-doc
-                          spaceline spacemacs-purpose-popwin
+                          lorem-ipsum lsp-origami lsp-ui macrostep
+                          magit-difftastic multi-line nameless nodejs-repl
+                          npm-mode open-junk-file org-download org-mime overseer
+                          paradox password-generator pcre2el pip-requirements
+                          pipenv pippel poetry popwin prettier-js pug-mode
+                          py-isort pydoc pyenv-mode pylookup pytest quelpa
+                          quickrun rainbow-delimiters request restart-emacs
+                          ron-mode rustic sass-mode scss-mode slim-mode smeargle
+                          space-doc spaceline spacemacs-purpose-popwin
                           spacemacs-whitespace-cleanup sphinx-doc
                           string-edit-at-point string-inflection symbol-overlay
                           symon systemd tagedit term-cursor toc-org toml-mode

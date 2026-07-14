@@ -268,8 +268,8 @@
 (global-set-key (kbd "C-s-n") 'origami-recursively-toggle-node)
 
 ;; start server
-(require 'server)
-(server-start)
+;; (require 'server)
+;; (server-start)
 
 ;; host specific config
 (load (locate-user-emacs-file "~/.emacs.d/private/g4z3/local.el") t)

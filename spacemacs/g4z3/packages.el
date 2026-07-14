@@ -64,6 +64,9 @@
     vterm  ;; required by ai-code
     eat    ;; required by ai-code
     ai-code
+    difftastic
+    (magit-difftastic
+     :location local)
     )
   "The list of Lisp packages required by the g4z3 layer.
 
@@ -264,5 +267,21 @@ Each entry is either:
     (global-auto-revert-mode 1)
     (with-eval-after-load 'magit
       (ai-code-magit-setup-transients))
+    )
+  )
+
+(defun g4z3/init-difftastic ()
+  (use-package difftastic)
+  )
+
+(defun g4z3/init-magit-difftastic ()
+  (require 'difftastic)
+  (use-package magit-difftastic
+    :load-path "/home/ph/src/env/spacemacs/g4z3/magit-difftastic"
+    ;; :defer t
+    :after magit
+    :config
+    (magit-difftastic-mode 1)
+    ;; (setq magit-difftastic-display 'side-by-side)
     )
   )
