@@ -282,6 +282,6 @@ Each entry is either:
     :after magit
     :config
     (magit-difftastic-mode 1)
-    ;; (setq magit-difftastic-display 'side-by-side)
+    (setq magit-difftastic-display "side-by-side-show-both")
     )
   )

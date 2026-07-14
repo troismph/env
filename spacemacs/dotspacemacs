@@ -667,8 +667,8 @@ This function is called at the very end of Spacemacs initialization."
                           evil-lisp-state evil-matchit evil-mc evil-nerd-commenter
                           evil-numbers evil-surround evil-textobj-line evil-tutor
                           evil-unimpaired evil-visual-mark-mode evil-visualstar
-                          expand-region eyebrowse fancy-battery flx-ido gendoxy
-                          git-link git-messenger git-modes git-timemachine
+                          expand-region eyebrowse fancy-battery flx-ido fullframe
+                          gendoxy git-link git-messenger git-modes git-timemachine
                           gitignore-templates golden-ratio google-c-style
                           google-translate gptel hackernews helm-ag
                           helm-c-yasnippet helm-comint helm-company helm-css-scss
@@ -680,7 +680,7 @@ This function is called at the very end of Spacemacs initialization."
                           indent-guide info+ inspector journalctl-mode js-doc
                           js2-refactor json-mode json-navigator json-reformat
                           latex-preview-pane link-hint live-py-mode livid-mode
-                          lorem-ipsum lsp-origami lsp-ui macrostep
+                          lorem-ipsum lsp-origami lsp-ui macrostep magit-delta
                           magit-difftastic multi-line nameless nodejs-repl
                           npm-mode open-junk-file org-download org-mime overseer
                           paradox password-generator pcre2el pip-requirements
