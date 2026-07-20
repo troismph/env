@@ -67,6 +67,8 @@
     difftastic
     (magit-difftastic
      :location local)
+    ultra-scroll
+    helm-gtags
     )
   "The list of Lisp packages required by the g4z3 layer.
 
@@ -263,6 +265,7 @@ Each entry is either:
     :config
     (ai-code-set-backend 'codex)
     (global-set-key (kbd "C-c a") #'ai-code-menu)
+    (setq ai-code-menu-layout 'two-columns)
     (setq ai-code-auto-test-type 'ask-me)
     (global-auto-revert-mode 1)
     (with-eval-after-load 'magit
@@ -284,4 +287,18 @@ Each entry is either:
     (magit-difftastic-mode 1)
     (setq magit-difftastic-display "side-by-side-show-both")
     )
+  )
+
+(defun g4z3/init-ultra-scroll ()
+  (use-package ultra-scroll
+    ;; :vc (:url "https://github.com/jdtsmith/ultra-scroll") ; if desired (emacs>=v30)
+    :init
+    (setq scroll-conservatively 3 ; or whatever value you prefer, since v0.4
+          scroll-margin 0)        ; important: scroll-margin>0 not yet supported
+    :config
+    (ultra-scroll-mode 1))
+  )
+
+(defun g4z3/init-helm-gtags ()
+  (use-package helm-gtags)
   )

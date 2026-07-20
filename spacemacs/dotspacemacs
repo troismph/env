@@ -637,7 +637,7 @@ This function is called at the very end of Spacemacs initialization."
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
    '(ai-code-onboarding-seen t)
-   '(custom-enabled-themes '(spacemacs-light))
+   '(custom-enabled-themes '(spacemacs-dark))
    '(custom-safe-themes
      '("73434a894b58d29665b2b16fd1c2845883001a79e05ccb72318dfe4bdaf39191"
        "9af2b1c0728d278281d87dc91ead7f5d9f2287b1ed66ec8941e97ab7a6ab73c0"
@@ -672,15 +672,16 @@ This function is called at the very end of Spacemacs initialization."
                           gitignore-templates golden-ratio google-c-style
                           google-translate gptel hackernews helm-ag
                           helm-c-yasnippet helm-comint helm-company helm-css-scss
-                          helm-ctest helm-descbinds helm-ls-git helm-lsp helm-make
-                          helm-mode-manager helm-org helm-projectile helm-purpose
-                          helm-pydoc helm-xref hide-comnt highlight-indentation
-                          highlight-numbers highlight-parentheses hl-todo
-                          holy-mode hungry-delete impatient-mode importmagic
-                          indent-guide info+ inspector journalctl-mode js-doc
-                          js2-refactor json-mode json-navigator json-reformat
-                          latex-preview-pane link-hint live-py-mode livid-mode
-                          lorem-ipsum lsp-origami lsp-ui macrostep magit-delta
+                          helm-ctest helm-descbinds helm-gtags helm-ls-git
+                          helm-lsp helm-make helm-mode-manager helm-org
+                          helm-projectile helm-purpose helm-pydoc helm-xref
+                          hide-comnt highlight-indentation highlight-numbers
+                          highlight-parentheses hl-todo holy-mode hungry-delete
+                          impatient-mode importmagic indent-guide info+ inspector
+                          journalctl-mode js-doc js2-refactor json-mode
+                          json-navigator json-reformat latex-preview-pane
+                          link-hint live-py-mode livid-mode lorem-ipsum
+                          lsp-origami lsp-ui macrostep magit-delta
                           magit-difftastic multi-line nameless nodejs-repl
                           npm-mode open-junk-file org-download org-mime overseer
                           paradox password-generator pcre2el pip-requirements
@@ -692,10 +693,11 @@ This function is called at the very end of Spacemacs initialization."
                           spacemacs-whitespace-cleanup sphinx-doc
                           string-edit-at-point string-inflection symbol-overlay
                           symon systemd tagedit term-cursor toc-org toml-mode
-                          tree-sitter treesit-fold undo-fu undo-fu-session
-                          vi-tilde-fringe vim-powerline volatile-highlights vundo
-                          web-beautify web-mode wgrep winum writeroom-mode
-                          ws-butler yaml-mode yasnippet-snippets)))
+                          tree-sitter treesit-fold ultra-scroll undo-fu
+                          undo-fu-session vi-tilde-fringe vim-powerline
+                          volatile-highlights vundo web-beautify web-mode wgrep
+                          winum writeroom-mode ws-butler yaml-mode
+                          yasnippet-snippets)))
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.

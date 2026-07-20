@@ -268,11 +268,28 @@
 (global-set-key (kbd "C-s-n") 'origami-recursively-toggle-node)
 
 ;; start server
-;; (require 'server)
-;; (server-start)
+(require 'server)
+(server-start)
 
 ;; host specific config
 (load (locate-user-emacs-file "~/.emacs.d/private/g4z3/local.el") t)
 
 ;; imenu-list position control
 (setq imenu-list-position 'left)
+
+;; keep buffers when clients exit
+(setq server-kill-new-buffers nil)
+
+;; magit config
+(with-eval-after-load 'magit
+  (magit-add-section-hook 'magit-status-sections-hook
+                          'magit-insert-modules
+                          'magit-insert-unpulled-from-pushremote)
+  (setq magit-repolist-columns
+        '(("Name" 25 magit-repolist-column-ident nil)
+          ("Version" 25 magit-repolist-column-version nil)
+          ("Status" 3 magit-repolist-column-flags nil) ; 显示所有状态
+          ("B<U" 3 magit-repolist-column-unpulled-from-upstream ((:right-align t)))
+          ("B>U" 3 magit-repolist-column-unpushed-to-upstream ((:right-align t)))
+          ("Path" 99 magit-repolist-column-path nil)))
+  )
