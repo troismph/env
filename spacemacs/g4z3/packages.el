@@ -280,7 +280,7 @@ Each entry is either:
 (defun g4z3/init-magit-difftastic ()
   (require 'difftastic)
   (use-package magit-difftastic
-    :load-path "/home/ph/src/env/spacemacs/g4z3/magit-difftastic"
+    :load-path "~/src/env/spacemacs/g4z3/magit-difftastic"
     ;; :defer t
     :after magit
     :config
