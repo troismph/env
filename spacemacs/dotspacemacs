@@ -637,13 +637,13 @@ This function is called at the very end of Spacemacs initialization."
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
    '(ai-code-onboarding-seen t)
-   '(custom-enabled-themes '(spacemacs-dark))
-   '(custom-safe-themes
-     '("73434a894b58d29665b2b16fd1c2845883001a79e05ccb72318dfe4bdaf39191"
-       "9af2b1c0728d278281d87dc91ead7f5d9f2287b1ed66ec8941e97ab7a6ab73c0"
-       "8874e55e1201a8caead1cf3bd59a5f81af098f73ba3bb3cdb09e7cbe9ccb0cc7"
-       "01f347a923dd21661412d4c5a7c7655bf17fb311b57ddbdbd6fce87bd7e58de6"
-       "3965b6ca0a05de9cca25e9d4b20518f2e1d06ccba6a7debda919aff8f7bc90b9" default))
+   ;; '(custom-enabled-themes '(spacemacs-dark))
+   ;; '(custom-safe-themes
+   ;;   '("73434a894b58d29665b2b16fd1c2845883001a79e05ccb72318dfe4bdaf39191"
+   ;;     "9af2b1c0728d278281d87dc91ead7f5d9f2287b1ed66ec8941e97ab7a6ab73c0"
+   ;;     "8874e55e1201a8caead1cf3bd59a5f81af098f73ba3bb3cdb09e7cbe9ccb0cc7"
+   ;;     "01f347a923dd21661412d4c5a7c7655bf17fb311b57ddbdbd6fce87bd7e58de6"
+   ;;     "3965b6ca0a05de9cca25e9d4b20518f2e1d06ccba6a7debda919aff8f7bc90b9" default))
    '(js-indent-level 2)
    '(org-babel-load-languages '((C . t) (js . t) (emacs-lisp . t) (python . t)))
    '(org-directory "~/Documents/notes")
