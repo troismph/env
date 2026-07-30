@@ -278,7 +278,7 @@
 (setq imenu-list-position 'left)
 
 ;; keep buffers when clients exit
-(setq server-kill-new-buffers nil)
+;; (setq server-kill-new-buffers nil)
 
 ;; magit config
 (with-eval-after-load 'magit
