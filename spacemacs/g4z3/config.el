@@ -166,6 +166,10 @@
     (let ((current-time (format-time-string "[%Y-%m-%d %a %H:%M:%S]")))
       (insert current-time))
     )
+
+  ;; latex preview scale
+  (setq org-format-latex-options
+        (plist-put org-format-latex-options :scale 2.0))
   )
 
 ;; auto remove trailing whitespaces on saving
