@@ -63,12 +63,14 @@
     org-special-block-extras
     vterm  ;; required by ai-code
     eat    ;; required by ai-code
-    ai-code
+    (ai-code
+     :location local)
     difftastic
     (magit-difftastic
      :location local)
     ultra-scroll
     helm-gtags
+    agent-shell
     )
   "The list of Lisp packages required by the g4z3 layer.
 
@@ -262,6 +264,8 @@ Each entry is either:
 
 (defun g4z3/init-ai-code ()
   (use-package ai-code
+    :ensure nil
+    :load-path "~/src/env/spacemacs/g4z3/ai-code-interface.el"
     :config
     (ai-code-set-backend 'codex)
     (global-set-key (kbd "C-c a") #'ai-code-menu)
@@ -301,4 +305,8 @@ Each entry is either:
 
 (defun g4z3/init-helm-gtags ()
   (use-package helm-gtags)
+  )
+
+(defun g4z3/init-agent-shell ()
+  (use-package agent-shell)
   )

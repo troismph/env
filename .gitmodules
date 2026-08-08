@@ -1,3 +1,6 @@
 [submodule "spacemacs/g4z3/magit-difftastic"]
 	path = spacemacs/g4z3/magit-difftastic
 	url = git@github.com:rschmukler/magit-difftastic.git
+[submodule "spacemacs/g4z3/ai-code-interface.el"]
+	path = spacemacs/g4z3/ai-code-interface.el
+	url = git@github.com:tninja/ai-code-interface.el.git
