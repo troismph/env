@@ -296,4 +296,24 @@
           ("B<U" 3 magit-repolist-column-unpulled-from-upstream ((:right-align t)))
           ("B>U" 3 magit-repolist-column-unpushed-to-upstream ((:right-align t)))
           ("Path" 99 magit-repolist-column-path nil)))
+  ;; Let difftastic fully control the hunk body.
+  (set-face-attribute 'magit-section-highlight nil
+                      :inherit nil
+                      :foreground 'unspecified
+                      :background 'unspecified
+                      :underline nil
+                      :overline nil
+                      :strike-through nil
+                      :box nil)
+
+  ;; Highlight only the current hunk heading.
+  (set-face-attribute 'magit-diff-hunk-heading-highlight nil
+                      :inherit 'magit-diff-hunk-heading
+                      :foreground 'unspecified
+                      :background (face-background 'highlight nil t)
+                      :underline nil
+                      :overline nil
+                      :strike-through nil
+                      :box nil
+                      :extend t)
   )
