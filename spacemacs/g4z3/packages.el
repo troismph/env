@@ -308,5 +308,13 @@ Each entry is either:
   )
 
 (defun g4z3/init-agent-shell ()
-  (use-package agent-shell)
+  (use-package agent-shell
+    :config
+    (setq agent-shell-openai-codex-environment
+          (agent-shell-make-environment-variables
+           :load-env "~/.proxy_env"
+           ))
+
+    (setq agent-shell-session-restore-verbosity "last")
+    )
   )
