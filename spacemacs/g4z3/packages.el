@@ -71,6 +71,7 @@
     ultra-scroll
     helm-gtags
     agent-shell
+    with-venv
     )
   "The list of Lisp packages required by the g4z3 layer.
 
@@ -267,7 +268,7 @@ Each entry is either:
     :ensure nil
     :load-path "~/src/env/spacemacs/g4z3/ai-code-interface.el"
     :config
-    (ai-code-set-backend 'codex)
+    (ai-code-set-backend 'agent-shell)
     (global-set-key (kbd "C-c a") #'ai-code-menu)
     (setq ai-code-menu-layout 'two-columns)
     (setq ai-code-auto-test-type 'ask-me)
@@ -316,5 +317,13 @@ Each entry is either:
            ))
 
     (setq agent-shell-session-restore-verbosity "last")
+    )
+  )
+
+(defun g4z3/init-with-venv ()
+  (use-package with-venv)
+  (with-eval-after-load 'dap-python
+    (defun dap-python--pyenv-executable-find (command)
+      (with-venv (executable-find "python")))  ;; fix dap-python's buggy method to locate python binary
     )
   )

@@ -15,7 +15,6 @@
         "-o ControlMaster=auto -o ControlPath='~/.ssh/sockets/tramp-%%r@%%h:%%p' -o ControlPersist=3600")
   )
 
-(add-hook 'python-mode-hook 'eglot-ensure)
 ;; (add-hook 'python-mode-hook
 ;;           (lambda ()
 ;;             (setq importmagic-python-interpreter
@@ -28,7 +27,7 @@
                '(python-mode . ("pyright-langserver" "--stdio"))
                nil)  ; `nil` ensures prepending instead of appending
   (add-hook 'c++-mode-hook 'eglot-ensure)
-
+  (add-hook 'python-mode-hook 'eglot-ensure)
   )
 
 (add-hook 'c++-mode-hook 'google-set-c-style)
