@@ -156,6 +156,7 @@
    '(
      (emacs-lisp . t)
      (python . t)
+     (dot . t)
      ))
 
   ;; custom command to insert time stamp with seconds
@@ -169,6 +170,15 @@
   ;; latex preview scale
   (setq org-format-latex-options
         (plist-put org-format-latex-options :scale 2.0))
+
+  ;; convenience in chat
+  (defun g4z3/org-insert-heading-with-timestamp ()
+    "Insert a new Org heading followed by a long (inactive) timestamp."
+    (interactive)
+    (org-insert-heading)
+    (org-insert-long-timestamp))
+
+  (global-set-key (kbd "C-c g c") #'g4z3/org-insert-heading-with-timestamp)
   )
 
 ;; auto remove trailing whitespaces on saving
@@ -270,9 +280,10 @@
 (global-set-key (kbd "M-y") 'thing-replace-symbol)
 (global-set-key (kbd "C-s-n") 'origami-recursively-toggle-node)
 
-;; start server
+;; start server if there's no such
 (require 'server)
-(server-start)
+(when (eq (server-running-p) nil)
+  (server-start))
 
 ;; host specific config
 (load (locate-user-emacs-file "~/.emacs.d/private/g4z3/local.el") t)

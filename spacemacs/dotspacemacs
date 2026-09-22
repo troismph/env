@@ -684,10 +684,11 @@ This function is called at the very end of Spacemacs initialization."
                           npm-mode open-junk-file org-download org-mime overseer
                           paradox password-generator pcre2el pip-requirements
                           pipenv pippel poetry popwin prettier-js pug-mode
-                          py-isort pydoc pyenv-mode pylookup pytest quelpa
-                          quickrun rainbow-delimiters request restart-emacs
-                          ron-mode rustic sass-mode scss-mode slim-mode smeargle
-                          space-doc spaceline spacemacs-purpose-popwin
+                          py-isort pydoc pyenv-mode pylookup pytest
+                          python-docstring quelpa quickrun rainbow-delimiters
+                          request restart-emacs ron-mode rustic sass-mode
+                          scss-mode separedit slim-mode smeargle space-doc
+                          spaceline spacemacs-purpose-popwin
                           spacemacs-whitespace-cleanup sphinx-doc
                           string-edit-at-point string-inflection symbol-overlay
                           symon systemd tagedit term-cursor toc-org toml-mode

@@ -72,6 +72,7 @@
     helm-gtags
     agent-shell
     with-venv
+    python-docstring
     )
   "The list of Lisp packages required by the g4z3 layer.
 
@@ -326,4 +327,8 @@ Each entry is either:
     (defun dap-python--pyenv-executable-find (command)
       (with-venv (executable-find "python")))  ;; fix dap-python's buggy method to locate python binary
     )
+  )
+
+(defun g4z3/init-python-docstring ()
+  (use-package python-docstring)
   )

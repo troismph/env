@@ -25,6 +25,7 @@ version: 0.1
 - 命令行: click
 - 进度条: tqdm
 - 并行计算: ray
+- 可序列化的数据结构: pydantic
 
 # 并行计算
 
