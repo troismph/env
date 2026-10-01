@@ -327,3 +327,46 @@
                       :box nil
                       :extend t)
   )
+
+;; mail sending
+(setq message-server-alist
+      '(("smtp.feishu.cn" :port 465 :user "ph@alphaith.com" :ssl t)))
+(setq smtpmail-servers-requiring-authorization ".*")
+
+;; mail receiving
+(with-eval-after-load 'minimail
+  (setq mail-user-agent 'minimail)
+  (setq minimail-accounts
+        '((ph ;; This can be any symbol you like to identify the account
+           :mail-address "ph@alphaith.com"
+           :user "ph@alphaith.com"
+           :incoming-url "imaps://imap.feishu.cn:993")
+          (alfred ;; Assuming Evil Corp. uses "Google Workspace" as email provider
+           :mail-address "alfred@alphaith.com"
+           :user "alfred@alphaith.com"
+           :incoming-url "imaps://imap.feishu.cn:993")
+          )
+        mail-user-agent 'minimail
+        message-server-alist
+        '(("ph@alphaith.com" . "smtp smtp.feishu.cn 465 ph@alphaith.com")
+          ("alfred@alphaith.com" . "smtp smtp.feishu.cn 465 alfred@alphaith.com")))
+  )
+
+;; experimental agent-via-email
+(with-eval-after-load 'agent-via-email
+  (require 'agent-via-email-message)
+  (require 'agent-via-email-minimail)
+  (setq agent-via-email-peer-address "ph@alphaith.com"
+        agent-via-email-bot-address "alfred@alphaith.com"
+        agent-via-email-poll-interval 20
+        agent-via-email-stall-timeout (* 3 60)
+        agent-via-email-tail-lines 100
+        agent-via-email-send-retry-limit 3
+        agent-via-email-send-retry-delay 15
+        agent-via-email-receive-backend
+        (agent-via-email-minimail-backend-create
+         :account 'alfred
+         :mailbox "INBOX")
+        agent-via-email-send-backend
+        (agent-via-email-message-backend-create))
+  )

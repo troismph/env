@@ -73,6 +73,10 @@
     agent-shell
     with-venv
     python-docstring
+    minimail
+    async  ;; required by agent-via-email
+    (agent-via-email
+     :location local)
     )
   "The list of Lisp packages required by the g4z3 layer.
 
@@ -316,8 +320,21 @@ Each entry is either:
           (agent-shell-make-environment-variables
            :load-env "~/.proxy_env"
            ))
-
     (setq agent-shell-session-restore-verbosity "last")
+    ;; (setq agent-shell-openai-codex-environment
+    ;;       (list
+    ;;        "HTTPS_PROXY=http://10.10.10.101:7890"
+    ;;        "HTTP_PROXY=http://10.10.10.101:7890"
+    ;;        "NO_PROXY=localhost,127.0.0.1,::1,.intra.pqi-inc.com,.intra.alphaith.com,10.0.0.0/8,192.168.0.0/16"
+    ;;        )
+    ;;       )
+    ;; (setq agent-shell-github-environment
+    ;;       (list
+    ;;        "HTTPS_PROXY=http://10.10.10.101:7890"
+    ;;        "HTTP_PROXY=http://10.10.10.101:7890"
+    ;;        "NO_PROXY=localhost,127.0.0.1,::1,.intra.pqi-inc.com,.intra.alphaith.com,10.0.0.0/8,192.168.0.0/16"
+    ;;        )
+    ;;       )
     )
   )
 
@@ -331,4 +348,30 @@ Each entry is either:
 
 (defun g4z3/init-python-docstring ()
   (use-package python-docstring)
+  )
+
+(defun g4z3/init-minimail ()
+  (use-package minimail
+    :demand t)
+  )
+
+(defun g4z3/init-async ()
+  (use-package async
+    :ensure t
+    :demand t)
+  )
+
+(defun g4z3/init-agent-via-email ()
+  ;; agent-via-email requires a recent `transient' (newer than the one
+  ;; bundled with Emacs) because minimail depends on it; make sure it is
+  ;; loaded before minimail/agent-via-email-minimail pull it in.
+  (require 'transient)
+  (use-package agent-via-email
+    :ensure nil
+    :demand t
+    :load-path "~/src/troismph/agent-via-email"
+    :after (async minimail)
+    :config
+    (require 'agent-via-email-message)
+    (require 'agent-via-email-minimail))
   )
