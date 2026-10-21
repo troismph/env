@@ -645,6 +645,10 @@ This function is called at the very end of Spacemacs initialization."
    '(js-indent-level 2)
    '(org-babel-load-languages '((C . t) (js . t) (emacs-lisp . t) (python . t)))
    '(org-directory "~/Documents/notes")
+   '(org-file-apps
+     '((auto-mode . emacs) (directory . emacs) ("\\.mm\\'" . default)
+       ("\\.x?html?\\'" . default) ("\\.pdf\\'" . default)
+       ("\\.png\\'" . "xdg-open %s")))
    '(org-todo-keywords
      '((sequence "QUESTION(q@/!)" "TODO(t@/!)" "PROGRESS(p@/!)" "BLOCKED(b@/!)" "|"
                  "DONE(d@/!)" "CANCELED(c@/!)")))
