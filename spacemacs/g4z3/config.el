@@ -327,3 +327,18 @@
                       :box nil
                       :extend t)
   )
+
+;; mail reader
+;; Preserve long paragraphs when rendering plain-text mail.
+(setq gnus-treat-fill-long-lines nil
+      gnus-treat-fill-article nil)
+
+;; Preserve long paragraphs when rendering HTML.
+(setq shr-fill-text nil)
+
+;; Wrap visually in Minimail's message buffers.
+(with-eval-after-load 'minimail
+  (add-hook 'minimail-message-mode-hook
+            (lambda ()
+              (visual-line-mode 1)))
+  )
