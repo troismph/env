@@ -340,5 +340,8 @@
 (with-eval-after-load 'minimail
   (add-hook 'minimail-message-mode-hook
             (lambda ()
-              (visual-line-mode 1)))
+              (setq-local visual-fill-column-width 100
+                          visual-fill-column-center-text t)
+              (visual-line-mode 1)
+              (visual-fill-column-mode 1)))
   )
