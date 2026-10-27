@@ -345,3 +345,9 @@
               (visual-line-mode 1)
               (visual-fill-column-mode 1)))
   )
+
+;; window title for different daemons
+(setq frame-title-format
+      (format "emacs_%s"
+              (let ((name (daemonp)))
+                (if (stringp name) name "default"))))
