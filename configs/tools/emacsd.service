@@ -3,6 +3,7 @@ Description=Emacs text editor (daemon)
 Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
 
 [Service]
+LimitNOFILE=8192:524288
 Type=forking
 EnvironmentFile=%h/.spacemacs.env
 ExecStart=/usr/bin/emacs --daemon

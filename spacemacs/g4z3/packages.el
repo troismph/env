@@ -318,6 +318,12 @@ Each entry is either:
 
 (defun g4z3/init-agent-shell ()
   (use-package agent-shell
+    :init
+    ;; Agent-shell bytecode can expand Compat's `with-work-buffer' macro.
+    ;; Load its runtime helpers explicitly on Emacs 29/30, even when an
+    ;; older Compat feature was already loaded during Spacemacs startup.
+    (when (< emacs-major-version 31)
+      (require 'compat-31))
     :config
     (setq agent-shell-openai-codex-environment
           (agent-shell-make-environment-variables
