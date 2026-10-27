@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Emacs — choose daemon
+Comment=Choose a running systemd-managed Emacs daemon and open a frame
+Exec=/home/ph/tools/emacs_session_launcher/emacs-session-launcher
+TryExec=/usr/bin/wish
+Icon=emacs
+Terminal=false
+Categories=Development;
+StartupNotify=false

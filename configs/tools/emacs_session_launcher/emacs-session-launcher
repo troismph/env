@@ -1,0 +1,107 @@
+#!/usr/bin/wish
+# Select a systemd-managed Emacs daemon in the current X2Go display.
+package require Tk
+wm withdraw .
+set env(LC_ALL) C
+set env(SYSTEMD_COLORS) 0
+
+proc fail {message} {
+    tk_messageBox -icon error -type ok -title "Emacs sessions" -message $message
+    exit 1
+}
+
+if {![info exists env(DISPLAY)] || $env(DISPLAY) eq ""} {
+    fail "No X11 display is available. Launch this application inside your X2Go session."
+}
+
+if {[catch {
+    exec /usr/bin/systemctl --user --no-pager --no-legend --plain \
+        list-units --type=service --state=running \
+        emacsd.service {emacsd_flex@*.service}
+} output]} {
+    fail "Could not list Emacs services:\n\n$output"
+}
+
+set sessions {}
+foreach line [split $output "\n"] {
+    set unit [lindex [regexp -all -inline {\S+} $line] 0]
+    if {$unit eq "emacsd.service"} {
+        lappend sessions [list default server $unit]
+    } elseif {[regexp {^emacsd_flex@(.+)\.service$} $unit -> name]} {
+        lappend sessions [list $name $name $unit]
+    }
+}
+set sessions [lsort -dictionary -index 0 $sessions]
+if {[llength $sessions] == 0} {
+    tk_messageBox -icon info -type ok -title "Emacs sessions" \
+        -message "No Emacs daemon sessions are running." \
+        -detail "Start one with:\nsystemctl --user start emacsd_flex@NAME"
+    exit 0
+}
+
+wm title . "Emacs — choose daemon"
+wm minsize . 440 220
+wm geometry . 540x300
+
+ttk::frame .body -padding 12
+pack .body -fill both -expand 1
+ttk::label .body.label -text "Choose an Emacs daemon:"
+pack .body.label -anchor w -pady {0 8}
+ttk::treeview .body.list -columns {service} -show {tree headings} \
+    -selectmode browse -height 7
+.body.list heading #0 -text "Session"
+.body.list heading service -text "Systemd service"
+.body.list column #0 -width 150 -stretch 0
+.body.list column service -width 330
+pack .body.list -fill both -expand 1
+set index 0
+foreach session $sessions {
+    lassign $session label socket unit
+    .body.list insert {} end -id $index -text $label -values [list $unit]
+    incr index
+}
+.body.list selection set 0
+.body.list focus 0
+
+ttk::frame .body.buttons
+pack .body.buttons -fill x -pady {12 0}
+ttk::button .body.buttons.cancel -text "Cancel" -command {exit 0}
+ttk::button .body.buttons.open -text "Open frame" -command connect
+pack .body.buttons.open .body.buttons.cancel -side right -padx 4
+
+proc connect {} {
+    global sessions env clientOutput
+    set selected [.body.list selection]
+    if {[llength $selected] == 0} {return}
+    set socket [lindex [lindex $sessions [lindex $selected 0]] 1]
+    # Keep this launcher alive until the client frame closes, for X2Go.
+    # An explicit alternate editor prevents accidental unmanaged daemon startup.
+    set command [list /usr/bin/emacsclient --socket-name=$socket \
+        --alternate-editor=/usr/bin/false --create-frame --display=$env(DISPLAY)]
+    if {[catch {open [concat [list |] $command [list 2>@1]] r} channel]} {
+        fail "Could not launch emacsclient:\n\n$channel"
+    }
+    wm withdraw .
+    set clientOutput ""
+    fconfigure $channel -blocking 0
+    fileevent $channel readable [list clientReady $channel]
+}
+
+proc clientReady {channel} {
+    global clientOutput
+    append clientOutput [read $channel]
+    if {[eof $channel]} {
+        fileevent $channel readable {}
+        fconfigure $channel -blocking 1
+        if {[catch {close $channel} error]} {
+            fail "Could not open the Emacs frame:\n\n$clientOutput\n$error"
+        }
+        exit 0
+    }
+}
+
+bind .body.list <Double-1> {connect}
+bind . <Return> {connect}
+bind . <Escape> {exit 0}
+wm deiconify .
+focus .body.list

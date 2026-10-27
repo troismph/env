@@ -42,6 +42,7 @@
 
 (defconst g4z3-packages
   '(
+    (org :location elpa :min-version "9.8" :step pre)
     pyim
     pyim-basedict
     ;; copilot
@@ -60,7 +61,7 @@
     gptel
     elysium
     org-remark
-    org-special-block-extras
+    ;; org-special-block-extras
     vterm  ;; required by ai-code
     eat    ;; required by ai-code
     (ai-code
@@ -191,6 +192,10 @@ Each entry is either:
   (use-package ag)
   )
 
+(defun g4z3/init-org ()
+  ;; Load the activated ELPA Org before ordinary package configuration.
+  (require 'org))
+
 (defun g4z3/init-org-mime ()
   (use-package org-mime)
   )
@@ -253,10 +258,8 @@ Each entry is either:
   (add-hook 'org-mode-hook 'org-remark-mode)
   )
 
-(defun g4z3/init-org-special-block-extras ()
-  (use-package org-special-block-extras)
-  (add-hook 'org-mode-hook 'org-special-block-extras-mode)
-  )
+;; (defun g4z3/init-org-special-block-extras ()
+;;   (use-package org-special-block-extras))
 
 (defun g4z3/init-vterm ()
   (use-package vterm

@@ -1,0 +1,16 @@
+[Unit]
+Description=Emacs text editor (daemon)
+Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
+
+[Service]
+Type=forking
+EnvironmentFile=%h/.spacemacs.env
+ExecStart=/usr/bin/emacs --daemon
+ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
+# PIDFile=/run/user/%U/emacs/%I.pid
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

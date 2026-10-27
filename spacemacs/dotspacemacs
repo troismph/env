@@ -58,8 +58,7 @@ This function should only modify configuration layer settings."
      lsp
      ;; markdown
      multiple-cursors
-     ;; do not open org here since spacemacs installs a newer buggy version
-     ;; comment org out to use the builtin org version
+     ;; ELPA Org is managed by g4z3; keep the full Org layer disabled.
      ;; (org :variables org-enable-org-brain-support t)
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -604,6 +603,9 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (require 'socks)
+  (setq url-gateway-method 'socks
+        socks-server '("Default server" "10.10.10.101" 7890 5))
   (setq configuration-layer-elpa-archives
         '(("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
           ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
