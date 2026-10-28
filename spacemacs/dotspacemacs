@@ -603,9 +603,19 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  (require 'socks)
-  (setq url-gateway-method 'socks
-        socks-server '("Default server" "10.10.10.101" 7890 5))
+  ;; Proxy variables are inherited from the daemon service's EnvironmentFile.
+  ;; url.el does not interpret CIDR entries in NO_PROXY, so bypass these
+  ;; private IPv4 literals explicitly.  Hostnames still use NO_PROXY rules.
+  (with-eval-after-load 'url-proxy
+    (defun g4z3/proxy-bypass-private-ipv4 (_url host)
+      "Return DIRECT for literal addresses in 10/8 and 192.168/16."
+      (when (string-match-p
+             (concat "\\`\\(?:10\\(?:\\.[0-9]\\{1,3\\}\\)\\{3\\}"
+                     "\\|192\\.168\\(?:\\.[0-9]\\{1,3\\}\\)\\{2\\}\\)\\'")
+             host)
+        "DIRECT"))
+    (advice-add 'url-default-find-proxy-for-url :before-until
+                #'g4z3/proxy-bypass-private-ipv4))
   (setq configuration-layer-elpa-archives
         '(("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
           ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
