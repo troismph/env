@@ -345,6 +345,16 @@ Each entry is either:
     ;;        )
     ;;       )
     )
+  (use-package agent-shell-math-renderer
+    :ensure t
+    :hook (agent-shell-mode . agent-shell-math-renderer-mode)
+    ;; 可选：切换主题或字体时，让公式颜色/大小自动刷新
+    :config
+    (add-hook 'enable-theme-functions
+              #'agent-shell-math-renderer-on-appearance-change)
+    (add-hook 'after-setting-font-hook
+              #'agent-shell-math-renderer-on-appearance-change)
+    )
   )
 
 (defun g4z3/init-with-venv ()

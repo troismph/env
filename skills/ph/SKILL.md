@@ -19,6 +19,15 @@ version: 0.1
     - 这是一个 (示例), 展示了结束符号右侧紧接其它标点的情况
 - 文档中若有需要用户回答的问题, 可提出, 并在"答复"后开一个空的 org comment block, 回复会填写在其中
 - 用户也可能在任何位置用 org comment block 添加上下文相关的评论
+- org 文档头需要添加 local variable 设定如下:
+  - org-use-sub-superscripts: "{}"
+- org 头部的 local variable 必须使用如下格式
+
+```
+# Local Variables:
+# org-use-sub-superscripts: "{}"
+# End:
+```
 
 # 基本库
 
