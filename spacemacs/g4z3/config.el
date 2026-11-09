@@ -179,6 +179,12 @@
     (org-insert-long-timestamp))
 
   (global-set-key (kbd "C-c g c") #'g4z3/org-insert-heading-with-timestamp)
+
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (setq-local fill-column 120)   ; or use setq-local
+              (visual-line-mode 1)
+              (visual-fill-column-mode 1)))
   )
 
 ;; auto remove trailing whitespaces on saving

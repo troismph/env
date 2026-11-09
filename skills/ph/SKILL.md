@@ -5,6 +5,16 @@ author: ph
 version: 0.1
 ---
 
+# Agent output
+
+Agent 的输出中:
+
+- latex 公式必须全 ascii 字符, 不要在其中使用中文或其它非 ascii 字符
+
+# DVC
+
+如果一个目录或文件有 .dvc 文件对应, 则不应修改它. 例如若存在文件 foo.dvc, 则不应修改 foo 文件, 或在 foo 目录中修改/添加/删除任何内容
+
 # 文档格式
 
 生成文档时:
@@ -47,6 +57,7 @@ version: 0.1
 - 如果一个 cli 支持 ray 并行, 则默认在本地启动一个单机 ray, 除非用户给了 ray-address 参数. 如果用户给 --ray-debug, 则用 ray-debug 方案运行, 方便用户调试
   - 但无论如何, 如果一 cli 支持 ray, 则它不需要实现 ray 之外的执行路径, 除非特别说明
 - 单元测试不要依赖 ray. 通常只应测试单个 worker 的行为. 另外, 如果"合并多个 worker 的数据"值得测试, 应该把这段逻辑包装成单独的函数供单元测试
+- max_in_flight 控制同时提交给 ray 的最大任务数, 不是控制 ray 并行执行的任务数. 此参数的意义在于减少 ray scheduler 的调度负担. 通常采用默认值即可, 除非用户特别指定, 不要设定此参数
 
 # CLI
 
