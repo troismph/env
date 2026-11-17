@@ -255,7 +255,7 @@ Each entry is either:
 
 (defun g4z3/init-org-remark ()
   (use-package org-remark)
-  (add-hook 'org-mode-hook 'org-remark-mode)
+  ;; (add-hook 'org-mode-hook 'org-remark-mode)
   )
 
 ;; (defun g4z3/init-org-special-block-extras ()
