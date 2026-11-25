@@ -1,0 +1,6 @@
+This tool creates a keyboard-trackpoint combined smooth scroll experience
+
+1. make sure evsieve is installed globally
+   1. cargo install --git https://github.com/KarsMulder/evsieve
+   2. sudo install -m 755 "$(command -v evsieve)" /usr/local/bin/evsieve
+2. run sudo ./tp_scroll.sh
