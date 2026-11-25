@@ -251,16 +251,17 @@
 
 ;; it's said this improve performance over tramp
 ;; ref https://sideshowcoder.com/2017/10/24/projectile-and-tramp/
-(with-eval-after-load 'projctile
-  (defadvice projectile-on (around exlude-tramp activate)
+(with-eval-after-load 'projectile
+  (defun g4z3/projectile-on-local (original &rest arguments)
     "This should disable projectile when visiting a remote file"
-    (unless  (--any? (and it (file-remote-p it))
-                     (list
-                      (buffer-file-name)
-                      list-buffers-directory
-                      default-directory
-                      dired-directory))
-      ad-do-it))
+    (unless (seq-some (lambda (path)
+                        (and (stringp path) (file-remote-p path)))
+                      (list (buffer-file-name)
+                            list-buffers-directory
+                            default-directory
+                            (bound-and-true-p dired-directory)))
+      (apply original arguments)))
+  (advice-add 'projectile-on :around #'g4z3/projectile-on-local)
   (setq projectile-mode-line "Projectile")
   )
 ;; pytest command flags

@@ -72,6 +72,7 @@
     ultra-scroll
     helm-gtags
     agent-shell
+    agent-shell-math-renderer
     with-venv
     python-docstring
     minimail
@@ -263,7 +264,7 @@ Each entry is either:
 
 (defun g4z3/init-vterm ()
   (use-package vterm
-    :ensure t)
+    :defer t)
   )
 
 (defun g4z3/init-eat ()
@@ -345,8 +346,13 @@ Each entry is either:
     ;;        )
     ;;       )
     )
+  )
+
+(defun g4z3/init-agent-shell-math-renderer ()
   (use-package agent-shell-math-renderer
-    :ensure t
+    :if (and (fboundp 'agent-shell-prompt-ranges)
+             (fboundp 'agent-shell-markdown-rerender-table)
+             (fboundp 'agent-shell-markdown-table-at))
     :hook (agent-shell-mode . agent-shell-math-renderer-mode)
     ;; 可选：切换主题或字体时，让公式颜色/大小自动刷新
     :config
@@ -374,7 +380,7 @@ Each entry is either:
     :demand t)
   )
 
-(defun g4z3/init-async ()
+(defun g4z3/post-init-async ()
   (use-package async
     :ensure t
     :demand t)

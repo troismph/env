@@ -104,7 +104,7 @@ This function should only modify configuration layer settings."
    ;; installs only the used packages but won't delete unused ones. `all'
    ;; installs *all* packages supported by Spacemacs and never uninstalls them.
    ;; (default is `used-only')
-   dotspacemacs-install-packages 'used-only))
+   dotspacemacs-install-packages 'used-but-keep-unused))
 
 (defun dotspacemacs/init ()
   "Initialization:
@@ -618,7 +618,6 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
                 #'g4z3/proxy-bypass-private-ipv4))
   (setq configuration-layer-elpa-archives
         '(("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-          ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
           ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
           ("nongnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")))
   )
