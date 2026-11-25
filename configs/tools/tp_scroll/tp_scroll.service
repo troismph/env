@@ -1,0 +1,16 @@
+[Unit]
+Description=TrackPoint Keyboard II Smooth Scrolling
+After=systemd-udevd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/tp_scroll
+Restart=always
+RestartSec=1
+
+Environment=MODIFIER=capslock
+Environment=SCALE_X=1
+Environment=SCALE_Y=1
+
+[Install]
+WantedBy=multi-user.target
