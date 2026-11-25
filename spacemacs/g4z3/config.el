@@ -339,3 +339,9 @@
       (format "emacs_%s"
               (let ((name (daemonp)))
                 (if (stringp name) name "default"))))
+
+;; 禁用所有中键点击行为（粘贴 primary selection）
+(global-set-key [mouse-2] #'ignore)
+
+;; 如果你还想阻止 mouse-2 在 key-translation-map 里的任何转换
+(define-key key-translation-map [mouse-2] #'ignore)
